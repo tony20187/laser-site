@@ -1,4 +1,8 @@
-/* 背景與蜜蜂圖片 */
+/* ===============================
+   SwirlAnimation.css
+   =============================== */
+
+/* 背景與容器 */
 .swirl-container {
   position: fixed;
   top: 0;
@@ -11,9 +15,10 @@
   align-items: center;
   flex-direction: column;
   z-index: 5000;
-  overflow-y: auto;  
+  overflow-y: auto;
 }
 
+/* 🐝 蜜蜂圖片 */
 .bee {
   width: 450px;
   height: 450px;
@@ -29,7 +34,7 @@
   z-index: 1;
 }
 
-/* 蜜蜂動畫 */
+/* 縮小旋轉動畫 */
 .shrink-and-rotate {
   animation: swirlFly 2s ease-in-out forwards;
 }
@@ -45,12 +50,12 @@
   }
 }
 
-/* 🐝 對話框：對齊蜜蜂左上角 */
+/* 💬 對話框 */
 .dialog-box {
   position: absolute;
-  top: calc(50% - 280px);     /* 蜜蜂 top 向上偏移（蜜蜂高度 450px 的約 60%） */
-  left: calc(50% - 550px);    /* 蜜蜂 left 向左偏移 */
-  background-color: rgba(255, 255, 255, 0.9);
+  top: calc(50% - 280px);
+  left: calc(50% - 550px);
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 14px;
   padding: 14px 20px;
   font-size: 2.5rem;
@@ -58,10 +63,12 @@
   color: #222;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
   animation: fadeIn 0.6s ease-in-out;
-  max-width: 300px;
+  max-width: 90%;
   z-index: 10;
+  text-align: center;
 }
 
+/* 淡入效果 */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -73,7 +80,23 @@
   }
 }
 
-/* 隱藏滾動條 */
+/* === 響應式調整 === */
+@media (max-width: 768px) {
+  .bee {
+    width: 240px;
+    height: 240px;
+  }
+
+  .dialog-box {
+    top: calc(50% - 160px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    max-width: 90%;
+  }
+}
+
+/* 隱藏滾動條 & 防止背景滾動 */
 body {
   overflow: hidden;
 }
