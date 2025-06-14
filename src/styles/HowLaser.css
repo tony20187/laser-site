@@ -1,0 +1,44 @@
+.howlaser-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.howlaser-text {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 60%;
+}
+
+.howlaser-text h1,
+.howlaser-text h2 {
+  color: #b45309;
+  margin-top: 1rem;
+}
+
+.howlaser-text ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.howlaser-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 40%;
+}
+
+.howlaser-image img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  opacity: 100;
+}

@@ -1,0 +1,58 @@
+/* CuttingComparison.css */
+
+.cuttingcomparison-container {
+  background: #fff9e6;
+  padding: 160px 40px 80px; /* ⬆️ 再次增加上方 padding 避免導覽列遮擋 */
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.cuttingcomparison-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-bottom: 40px;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 3rem;
+  background-color: white;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+
+.comparison-table th {
+  background-color: #fde68a;
+  color: #92400e;
+  font-weight: bold;
+}
+
+.comparison-table td {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .comparison-table th,
+  .comparison-table td {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .cuttingcomparison-title {
+    font-size: 2rem;
+  }
+}

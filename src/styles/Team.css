@@ -1,0 +1,120 @@
+/* 🌟 容器：背景與字體 */
+.team-container {
+  background-color: #fff9e6;
+  padding: 120px 20px 60px;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -50px; /* 往上移，數值越小越貼近導覽列 */
+  margin-bottom: 40px;
+  color: #a0522d; /* 你的標題顏色，可依需求 */
+}
+
+.team-photo-wrapper {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.team-photo {
+  width: 100%;
+  display: block;
+}
+
+.team-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto;
+}
+
+.team-menu-btn {
+  background: #facc15;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-menu-btn:hover {
+  background: #fbbf24;
+  transform: translateY(-2px);
+}
+
+.team-menu-btn.active {
+  background: #f59e0b;
+  color: #fff;
+}
+/* 📌 團隊詳細介紹區：穩定的左右排列 */
+.team-detail-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  flex-wrap: nowrap;  /* 固定不換行，除非手機版 */
+}
+
+.team-member-photo {
+  flex: 0 0 280px;     /* 固定寬度 */
+  text-align: center;
+}
+
+.team-member-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.team-detail {
+  flex: 1;                     /* 右側自動填滿剩下空間 */
+  max-width: 600px;            /* 給最大寬度 */
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.team-detail h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #b45309;
+}
+
+.team-detail p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 📱 RWD 手機版自動上下排列 */
+@media (max-width: 768px) {
+  .team-detail-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member-photo {
+    width: 80%;
+  }
+
+  .team-detail {
+    max-width: 90%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,43 @@
+.machine-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.machine-text {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 60%;
+}
+
+.machine-text h1, .machine-text h2 {
+  color: #b45309;
+  margin-top: 1rem;
+}
+
+.machine-text ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.machine-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 40%;
+}
+
+.machine-image img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  object-fit: contain;
+  opacity: 100;
+}
