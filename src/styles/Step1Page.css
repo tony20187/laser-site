@@ -1,0 +1,53 @@
+.step-page {
+  background-color: #fff9e6;
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.step-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #b45309;
+  margin-bottom: 20px;
+}
+
+.step-description {
+  text-align: center;
+  font-size: 1.7rem;
+  max-width: 1800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.image-gallery img {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+/* ✅ 右上角重聽按鈕 */
+.replay-button {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  background: #fcd34d;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.replay-button:hover {
+  background: #fbbf24;
+}

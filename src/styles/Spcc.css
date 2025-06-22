@@ -1,0 +1,86 @@
+/* ✅ Spcc.css：符合 SUS304 自然融入風格設計 */
+
+.spcc-detail-container {
+  padding: 40px 20px;
+  background-color: #fff9e6;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.spcc-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #b45309;
+  margin-bottom: 30px;
+}
+
+.spcc-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 文字區 */
+.spcc-text {
+  flex: 1 1 500px;
+  max-width: 600px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+.spcc-text section {
+  margin-bottom: 30px;
+}
+
+.spcc-text h2 {
+  color: #f59e0b;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.spcc-text ul,
+.spcc-text ol {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* ✅ 圖片區：不漂浮、無邊框、無圓角 */
+.spcc-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.spcc-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ 響應式排版：手機版上下排列 */
+@media (max-width: 768px) {
+  .spcc-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .spcc-text,
+  .spcc-image {
+    max-width: 100%;
+  }
+
+  .spcc-image img {
+    max-width: 90%;
+  }
+}

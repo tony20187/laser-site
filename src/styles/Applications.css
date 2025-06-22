@@ -1,0 +1,137 @@
+/* === 主要容器 === */
+.applications-container {
+  background-color: #fff9e6;
+  padding: 120px 20px 60px;
+  min-height: 100vh;
+  color: #333;
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* === 標題 & 副標題 === */
+.applications-title {
+  margin-top: -40px;
+  font-size: 2.5rem;
+  color: #b45309;
+}
+
+.applications-subtext {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+/* === 卡片區塊 === */
+.applications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.application-card {
+  background: #fff;
+  border-radius: 20px;
+  width: 400px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.application-card:hover {
+  transform: translateY(-8px);
+  background: #fef3c7;
+}
+
+.application-card h2 {
+  font-size: 1.5rem;  /* 調整為大一點的標題 */
+  margin-bottom: 15px;
+  color: #b45309;
+}
+
+.application-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.application-card li {
+  margin-bottom: 12px;
+  font-size: 1.2rem;  /* 調整卡片內文字大小 */
+}
+
+/* === Hover 顯示圖片 === */
+.applications-hover-image {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 2000px;
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* === 蜜蜂獨立控制 === */
+.applications-bee {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* === 對話框獨立控制 === */
+.applications-dialog {
+  position: absolute;
+  bottom: 190px;
+  left: 30%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 20px 30px;
+  border: 2px solid #d97706;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 1.4rem;
+  color: #b45309;
+  line-height: 1.6;
+  z-index: 11;
+}
+
+/* === ✅ 強化 RWD === */
+@media (max-width: 768px) {
+  .applications-hover-image {
+    max-width: 95%;
+    bottom: 30px;
+  }
+
+  .applications-bee {
+    width: 80px;
+    bottom: 30px;
+  }
+
+  .applications-dialog {
+    bottom: 130px;
+    font-size: 1.2rem;
+    padding: 15px 20px;
+  }
+
+  .application-card {
+    width: 90%;
+  }
+
+  .application-card h2 {
+    font-size: 1rem; /* 標題在手機時更小 */
+  }
+
+  .application-card li {
+    font-size: 0.8rem; /* 內文在手機時更小 */
+  }
+}

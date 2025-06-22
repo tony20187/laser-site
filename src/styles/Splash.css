@@ -1,0 +1,49 @@
+/* Splash.css */
+
+.splash-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/index.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;     /* 允許垂直捲動 */
+}
+
+.logo-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.logo-image {
+  width: 250px; /* 調整寬度，可以更改這個數值放大圖片 */
+  height: auto;
+}
+
+.enter-button {
+  position: relative;
+  margin-top: 450px; /* 按鈕距離圖片或中央位置 */
+  padding: 1rem 2rem;
+  font-size: 3rem;
+  background-color: #fcd34d;
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.enter-button:hover {
+  background-color: #fbbf24;
+}

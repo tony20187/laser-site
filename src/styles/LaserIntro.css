@@ -1,0 +1,116 @@
+.laser-intro-container {
+  position: relative; /* ⚡ 必須要 relative，方便內部絕對定位 */
+  background-color: #fff9e6;
+  min-height: 100vh;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  overflow: hidden; /* ⚡ 避免圖片溢出 */
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-bottom: 40px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.intro-card {
+  width: 300px;
+  height: 150px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-8px);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* 🐝 蜜蜂區塊樣式 */
+.bee-section {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bee-image {
+  height: 450px;
+  width: auto;
+}
+
+.bee-dialog {
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 400px);
+  width: 200px;
+  padding: 12px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ✅ 左上角背景圖片 */
+.top-left-bg {
+  position: absolute;
+  top: 10px;    /* 可以自行調整上下距離 */
+  left: 20px;   /* 可以自行調整左右距離 */
+  width: 330px; /* 控制大小 */
+  z-index: 0;   /* 在最底層 */
+  pointer-events: none; /* 不擋住點擊 */
+  opacity: 0.8; /* 如需要可調透明度 */
+}
+
+/* ✅ 右下角背景圖片 */
+.bottom-right-bg {
+  position: absolute;
+  bottom: 20px;  /* 可以自行調整上下距離 */
+  right: 20px;   /* 可以自行調整左右距離 */
+  width: 550px;  /* 控制大小 */
+  z-index: 0;    /* 在最底層 */
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ✅ RWD: 畫面縮小時自動縮小圖片 */
+@media (max-width: 768px) {
+  .top-left-bg {
+    width: 120px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .bottom-right-bg {
+    width: 150px;
+    bottom: 10px;
+    right: 10px;
+  }
+}

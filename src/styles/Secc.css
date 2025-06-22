@@ -1,0 +1,86 @@
+/* ✅ Secc.css：符合 SUS304 自然貼合風格 */
+
+.secc-detail-container {
+  background-color: #fff9e6;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.secc-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #b45309;
+  margin-bottom: 30px;
+}
+
+.secc-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* 文字區塊 */
+.secc-text {
+  flex: 1 1 500px;
+  max-width: 600px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+.secc-text section {
+  margin-bottom: 30px;
+}
+
+.secc-text h2 {
+  color: #f59e0b;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.secc-text ul,
+.secc-text ol {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* ✅ 圖片區：不漂浮、無邊框、無圓角 */
+.secc-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.secc-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ 響應式排版：手機版上下排列 */
+@media (max-width: 768px) {
+  .secc-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .secc-text,
+  .secc-image {
+    max-width: 100%;
+  }
+
+  .secc-image img {
+    max-width: 90%;
+  }
+}

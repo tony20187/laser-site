@@ -1,0 +1,114 @@
+/* ✅ 獨立 CuttingComparison 專用，class 前面都加 cc- 前綴 */
+
+.cc-container {
+  background: #fff9e6;
+  padding: 160px 40px 80px;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.cc-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-top: -90px;
+  margin-bottom: 40px;
+}
+
+.cc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.3rem;
+  background: white;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;
+  cursor: pointer;
+}
+
+.cc-table th,
+.cc-table td {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+  transition: background-color 0.3s ease;
+}
+
+.cc-table th {
+  background: #fde68a;
+  color: #92400e;
+}
+
+.cc-table tr:hover {
+  background: #fef3c7;
+}
+
+.cc-display {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cc-image-block h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #92400e;
+}
+
+.cc-method-image {
+  height: 350px;   /* ✅ 固定寬度 */
+  width:  350px;
+  border: 4px solid #fde68a;
+  border-radius: 8px;
+}
+
+
+.cc-bee-dialog-block {
+  position: relative;
+  display: inline-block;
+}
+
+.cc-bee-image {
+  width: 450px;
+  height: auto;
+}
+
+.cc-dialog {
+  position: absolute;
+  top: -20px;
+  left: -350px;
+  background: #ffffff;
+  border: 2px solid #92400e;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  width: 350x;
+  font-size: 2rem;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .cc-table th,
+  .cc-table td {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .cc-title {
+    font-size: 2rem;
+  }
+
+  .cc-bee-image {
+    width: 120px;
+  }
+
+  .cc-dialog {
+    width: 200px;
+    font-size: 1rem;
+    top: -50px;
+    left: -160px;
+  }
+}

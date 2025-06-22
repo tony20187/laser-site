@@ -1,0 +1,85 @@
+/* ✅ Sus430.css：符合 SUS304 標準風格 */
+
+.sus430-detail-container {
+  background-color: #fff9e6;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.sus430-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #b45309;
+  margin-bottom: 30px;
+}
+
+.sus430-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.sus430-text {
+  flex: 1 1 500px;
+  max-width: 600px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+.sus430-text section {
+  margin-bottom: 30px;
+}
+
+.sus430-text h2 {
+  color: #f59e0b;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.sus430-text ul,
+.sus430-text ol {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* ✅ 圖片區塊：無陰影、無圓角、自然融入 */
+.sus430-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.sus430-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ 響應式設計：手機版上下排列 */
+@media (max-width: 768px) {
+  .sus430-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sus430-text,
+  .sus430-image {
+    max-width: 100%;
+  }
+
+  .sus430-image img {
+    max-width: 90%;
+  }
+}

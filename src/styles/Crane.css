@@ -1,0 +1,71 @@
+/* Crane - 卡片式導覽設計 */
+
+.crane-wrapper {
+  padding: 80px 20px;
+  background: #fffdf3;
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+}
+
+.crane-title {
+  font-size: 2.2rem;
+  color: #b45309;
+  margin-bottom: 40px;
+}
+
+.crane-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.crane-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 30px 25px;
+  max-width: 340px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.crane-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.crane-card h2 {
+  font-size: 1.5rem;
+  color: #b45309;
+  margin-bottom: 15px;
+}
+
+.crane-card p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.crane-card ul {
+  list-style: disc inside;
+  margin: 0;
+  padding: 0;
+}
+
+.crane-card li {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* RWD: 確保手機單欄呈現 */
+@media (max-width: 768px) {
+  .crane-title {
+    font-size: 1.8rem;
+  }
+
+  .crane-card {
+    max-width: 100%;
+  }
+}

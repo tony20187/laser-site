@@ -1,0 +1,91 @@
+.howlaser-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.howlaser-text {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 60%;
+}
+
+.howlaser-text h1,
+.howlaser-text h2 {
+  color: #b45309;
+  margin-top: 1rem;
+}
+
+.howlaser-text ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.howlaser-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 40%;
+  margin-top: 90px; /* ✅ ✅ 加這行: 圖片往下推 */
+}
+
+.howlaser-image img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+  opacity: 100;
+}
+
+/* ✅ 重聽一次按鈕固定在右上 */
+.listen-again-btn {
+  position: fixed;
+  top: 80px;
+  right: 50px;
+  background: #fcd34d;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.listen-again-btn:hover {
+  background: #fbbf24;
+}
+
+/* ✅ RWD: 單欄排版 + 按鈕大小 + 圖片置中 */
+@media (max-width: 768px) {
+  .howlaser-container {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .howlaser-text {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .howlaser-image {
+    max-width: 100%;
+    margin-top: 30px; /* ✅ RWD 也往下推一點 */
+    justify-content: center;
+  }
+
+  .listen-again-btn {
+    top: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 1rem;
+  }
+}

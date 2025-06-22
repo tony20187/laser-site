@@ -1,0 +1,89 @@
+/* ✅ SUS304 詳細頁 CSS：圖片自然融入、不漂浮、完整 RWD */
+
+/* 整體容器 */
+.sus304-detail-container {
+  background-color: #fff9e6;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* 標題 */
+.sus304-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #b45309;
+  margin-bottom: 30px;
+}
+
+/* 主內容區塊：圖片與文字 */
+.sus304-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* 文字內容區 */
+.sus304-text {
+  flex: 1 1 500px;
+  max-width: 600px;
+  font-size: 1.4rem;
+  color: #444;
+}
+
+.sus304-text section {
+  margin-bottom: 30px;
+}
+
+.sus304-text h2 {
+  color: #f59e0b;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.sus304-text ul,
+.sus304-text ol {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* ✅ 圖片區塊：完全自然貼合、無陰影/邊框 */
+.sus304-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.sus304-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ RWD 響應式：小於 768px 時上下排列 */
+@media (max-width: 768px) {
+  .sus304-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sus304-text,
+  .sus304-image {
+    max-width: 100%;
+  }
+
+  .sus304-image img {
+    max-width: 90%;
+  }
+}

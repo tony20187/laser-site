@@ -1,0 +1,102 @@
+/* ✅ Al.css：符合 SUS304/Spcc 自然貼合風格 + 捲動支援 */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto; /* ✅ 根本設定允許捲動 */
+}
+
+.al-detail-container {
+  padding: 40px 20px;
+  background-color: #fff9e6;
+  min-height: 100vh;
+  overflow-y: auto;           /* ✅ 允許垂直捲動 */
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.al-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.al-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* 文字區 */
+.al-text {
+  flex: 1 1 500px;
+  max-width: 800px;
+  text-align: left;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.al-text section {
+  margin-bottom: 30px;
+}
+
+.al-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #b45309;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.al-text ul,
+.al-text ol {
+  padding-left: 20px;
+}
+
+.al-text li {
+  margin-bottom: 10px;
+}
+
+/* ✅ 圖片區：自然風格，不漂浮、不突兀 */
+.al-image {
+  flex: 1 1 300px;
+  max-width: 500px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.al-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* ✅ 響應式：手機版上下排列 */
+@media (max-width: 768px) {
+  .al-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .al-text,
+  .al-image {
+    max-width: 100%;
+  }
+
+  .al-image img {
+    max-width: 90%;
+  }
+}

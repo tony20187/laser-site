@@ -1,0 +1,35 @@
+.step3-page {
+  background-color: #fff9e6;
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.step3-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #b45309;
+  margin-bottom: 20px;
+}
+
+.step3-description {
+  text-align: center;
+  font-size: 1.7rem;
+  max-width: 1800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.step3-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.step3-gallery video {
+  max-width: 550px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

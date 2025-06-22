@@ -1,0 +1,49 @@
+{
+  "name": "laser-site",
+  "version": "2025.6.22-3",
+  "description": "華谷電機專用雷射應用程式",
+  "author": "機工課雷射組-副組長 李書宏 <tony20187@gmail.com>",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "electron .",
+    "serve": "npm run build && npm run start",
+    "dist": "electron-builder"
+  },
+  "build": {
+    
+    "productName": "華谷電機雷射世界",
+    "appId": "com.huagu.lasersite",
+    "copyright": "Copyright © 2025 Tony",
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "public",
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/HWAGUO-LS.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "華谷電機雷射世界"
+    }
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.13.3",
+    "vite": "^4.5.14"
+  }
+}

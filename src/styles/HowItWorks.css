@@ -1,0 +1,100 @@
+/* HowItWorks.css */
+.howitworks-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* 左邊區塊 */
+.howitworks-left {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 2rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 50%;
+  min-width: 300px;
+}
+
+/* 右邊區塊 */
+.howitworks-right {
+  flex: 1;
+  padding-left: 40px;
+  font-size: 2rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 50%;
+  min-width: 300px;
+}
+
+.howitworks-left h1,
+.howitworks-left h3,
+.howitworks-right h3 {
+  color: #b45309;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem; /* 縮小標題與段落間距 */
+}
+
+.howitworks-left p,
+.howitworks-left ol,
+.howitworks-right p,
+.howitworks-right ul {
+  margin-top: 0.3rem; /* 緊貼標題 */
+}
+
+.howitworks-left ol,
+.howitworks-right ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.laser-image img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+/* === ✅ 固定右上角的重聽一次按鈕 === */
+.listen-again-btn {
+  position: fixed;    /* ✅ 固定位置！ */
+  top: 80px;
+  right: 50px;
+  padding: 12px 20px;
+  font-size: 1.5rem;
+  background-color: #fcd34d;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 9999;   /* ✅ 永遠在最上層 */
+}
+
+.listen-again-btn:hover {
+  background-color: #fbbf24;
+}
+
+/* === RWD === */
+@media (max-width: 768px) {
+  .howitworks-container {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .howitworks-left,
+  .howitworks-right {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .listen-again-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

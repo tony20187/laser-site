@@ -1,0 +1,40 @@
+.step4-container {
+  background-color: #fdfaf5;
+  padding: 40px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.step4-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #b45309;
+}
+
+.step4-image-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.step4-image {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.step4-image:hover {
+  transform: scale(1.05);
+}
+
+.step4-description {
+  font-size: 20px;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}

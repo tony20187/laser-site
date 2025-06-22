@@ -1,0 +1,133 @@
+.laser-process-container {
+  background-color: #fff9e6;
+  min-height: 100vh;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  position: relative; /* 讓背景圖絕對定位 */
+  overflow: hidden;
+}
+
+.bg-left-top {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  z-index: 0;
+}
+
+.bg-right-bottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  z-index: 0;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.process-card {
+  width: 300px;
+  height: 150px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-8px);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.bee-section {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.bee-image {
+  height: 450px;
+  width: auto;
+}
+
+.bee-dialog {
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 400px);
+  width: 200px;
+  padding: 12px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ✅ RWD：背景圖與卡片、蜜蜂區塊縮放與排版 */
+@media (max-width: 768px) {
+  .bg-left-top,
+  .bg-right-bottom {
+    width: 150px; /* 背景圖縮小一半 */
+  }
+
+  .process-card {
+    width: 90%;
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  .icon {
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .bee-image {
+    height: 200px; /* 蜜蜂縮小 */
+  }
+
+  .bee-dialog {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    font-size: 1rem;
+  }
+}

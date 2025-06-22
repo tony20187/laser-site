@@ -1,0 +1,203 @@
+/* === 全域容器 === */
+.team-container {
+  background-color: #fff9e6;
+  padding: 120px 20px 60px;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: 40px;
+  color: #a0522d;
+}
+.team-top {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;    /* 可選：flex-start | flex-end | center */
+  align-items: center;        /* 上下置中 */
+  gap: 50px;                  /* 照片 & 文宣間距 */
+  margin-bottom: 60px;
+  padding: 0 100px;           /* 調整總體左右空間 */
+}
+
+
+.team-photo-wrapper {
+  flex: 0 0 auto;
+  max-width: 800px;
+}
+
+.team-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.team-brand {
+  flex: 1;                /* 直接吃剩下所有空間 */
+  width: auto;            /* 吃剩下的 */
+  min-width: 0;           /* 讓 flex 正確縮放 */
+  max-width: none;        /* 取消 max-width 限制 */
+  background: none;
+  border-left: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  text-align: left;
+  word-break: break-word; /* 中文正常換行 */
+  white-space: normal;
+}
+
+.team-brand p {
+  width: 100%;
+  word-break: break-word;
+  line-height: 2;
+  font-size: 2rem;
+  color: #333;
+}
+
+.team-brand h3 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #b45309;
+}
+
+.team-brand strong {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  font-size: 2rem;
+}
+
+
+/* === 中層：人名選單 === */
+.team-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px auto 50px;
+}
+
+.team-menu-btn {
+  background: #facc15;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-menu-btn:hover {
+  background: #fbbf24;
+  transform: translateY(-2px);
+}
+
+.team-menu-btn.active {
+  background: #f59e0b;
+  color: #fff;
+}
+
+/* === 下層：單人詳細介紹 === */
+.team-detail-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  flex-wrap: wrap;
+}
+
+.team-member-photo {
+  flex: 0 0 280px;
+  text-align: center;
+}
+
+.team-member-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: none;  /* 無陰影，無漂浮 */
+}
+
+.team-detail {
+  flex: 1;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.team-detail h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #b45309;
+}
+
+.team-detail p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+.replay-button {
+  position: fixed;     /* 固定在畫面上 */
+  top: 80px;           /* 距離上方 30px */
+  right: 30px;         /* 距離右側 30px */
+  z-index: 999;        /* 保證在最上層 */
+  background: #f59e0b; /* 顏色可自調 */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.replay-button:hover {
+  background: #d97706;
+}
+
+/* === RWD 響應式 === */
+@media (max-width: 1024px) {
+  .team-top {
+    flex-wrap: wrap;
+  }
+
+  .team-photo-wrapper {
+    max-width: 100%;
+  }
+
+  .team-brand {
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .team-detail-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member-photo {
+    width: 80%;
+  }
+
+  .team-detail {
+    max-width: 90%;
+    text-align: center;
+  }
+}
