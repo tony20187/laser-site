@@ -1,19 +1,20 @@
-/* 背景與蜜蜂圖片 */
+/* ✅ 背景設定與中央蜜蜂圖 */
 .swirl-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #fff9e6;
+  background: #fff9e6; /* ✅ 柔和淺黃色背景 */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 5000;
-  overflow-y: auto;  
+  overflow-y: auto;
 }
 
+/* ✅ 中央蜜蜂動畫設定 */
 .bee {
   width: 450px;
   height: 450px;
@@ -29,7 +30,29 @@
   z-index: 1;
 }
 
-/* 蜜蜂動畫 */
+/* ✅ 左上六角形裝飾 */
+.hexagon-decoration-left {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 450px;
+  height: auto;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ✅ 右下六角形裝飾 */
+.hexagon-decoration-right {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  width: 450px;
+  height: auto;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* ✅ 蜜蜂離開時動畫 */
 .shrink-and-rotate {
   animation: swirlFly 2s ease-in-out forwards;
 }
@@ -45,11 +68,11 @@
   }
 }
 
-/* 🐝 對話框：對齊蜜蜂左上角 */
+/* ✅ 對話框樣式 */
 .dialog-box {
   position: absolute;
-  top: calc(50% - 280px);     /* 蜜蜂 top 向上偏移（蜜蜂高度 450px 的約 60%） */
-  left: calc(50% - 550px);    /* 蜜蜂 left 向左偏移 */
+  top: calc(50% - 280px);
+  left: calc(50% - 550px);
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 14px;
   padding: 14px 20px;
@@ -73,7 +96,29 @@
   }
 }
 
-/* 隱藏滾動條 */
+/* ✅ 移除滾動條 */
 body {
   overflow: hidden;
+}
+
+/* ✅ RWD 響應式設計 */
+@media (max-width: 768px) {
+  .bee {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hexagon-decoration-left,
+  .hexagon-decoration-right {
+    width: 200px;
+  }
+
+  .dialog-box {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90%;
+    font-size: 1.6rem;
+    padding: 10px 14px;
+  }
 }

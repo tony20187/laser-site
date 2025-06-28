@@ -1,73 +1,84 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/Al.css';
-import Navbar3 from "../components/Navbar3";
+import Navbar3 from '../components/Navbar3';
 
 const Al = () => {
+  const synthRef = useRef(window.speechSynthesis);
   const utteranceRef = useRef(null);
+  const hasSpokenRef = useRef(false); // ✅ 防止重複播放
 
-  // ✅ 播放語音
-  const playSpeech = () => {
-    window.speechSynthesis.cancel();
-    const text = "AL 鋁板介紹。 製程說明。1.將鋁錠透過擠壓或軋延方式形成鋁板。2.可進一步進行陽極處理以提升耐蝕性與美觀。3.根據用途可進行合金調整如 5052、6061 等系列。4.表面可做鏡面、霧面、花紋板等多種處理。材料特性。1.重量輕、強度佳。2.抗腐蝕性優異。3.良好導電導熱性。4.可塑性高，適合多樣加工。 適用領域。1.航空與汽車工業。2.電子產品外殼。3.建築裝潢與隔熱板。4.餐廚器具、家電面板。";
+  const speak = (text) => {
+    stopSpeech();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "zh-TW";
+    utterance.lang = 'zh-TW';
     utterance.rate = 1;
-    window.speechSynthesis.speak(utterance);
     utteranceRef.current = utterance;
+    synthRef.current.speak(utterance);
   };
 
-  // ✅ 一進入就播
+  const stopSpeech = () => {
+    if (synthRef.current && synthRef.current.speaking) {
+      synthRef.current.cancel();
+    }
+  };
+
   useEffect(() => {
-    playSpeech();
-    return () => {
-      window.speechSynthesis.cancel();
-    };
+    // ✅ 頁面載入時自動播放一次總結語音
+    if (!hasSpokenRef.current) {
+      const summaryText = `點擊段落會播放語音!!`;
+      speak(summaryText);
+      hasSpokenRef.current = true;
+    }
   }, []);
 
   return (
-    <div className="spcc-detail-container">
+    <div className="al-detail-container">
       <Navbar3 />
 
-      {/* ✅ 右上角重聽一次按鈕 */}
-      <button className="replay-button" onClick={playSpeech}>
-        🔊 重聽一次
-      </button>
+      <h1 className="al-title">AL 鋁板介紹</h1>
 
-      <h1 className="spcc-title">AL 鋁板介紹</h1>
-      <div className="spcc-content">
-        <div className="spcc-text">
+      <div className="al-content">
+        <div className="al-text">
           <section>
-            <h2>📌 製程說明</h2>
+            <h2 onMouseEnter={() => speak('製程說明')} onMouseLeave={stopSpeech}>📌 製程說明</h2>
             <ol>
-              <li>將鋁錠透過擠壓或軋延方式形成鋁板。</li>
-              <li>可進一步進行陽極處理以提升耐蝕性與美觀。</li>
-              <li>根據用途可進行合金調整如 5052、6061 等系列。</li>
-              <li>表面可做鏡面、霧面、花紋板等多種處理。</li>
+              <li onMouseEnter={() => speak('將鋁錠透過擠壓或軋延方式形成鋁板。')} onMouseLeave={stopSpeech}>將鋁錠透過擠壓或軋延方式形成鋁板。</li>
+              <li onMouseEnter={() => speak('可進一步進行陽極處理以提升耐蝕性與美觀。')} onMouseLeave={stopSpeech}>可進一步進行陽極處理以提升耐蝕性與美觀。</li>
+              <li onMouseEnter={() => speak('根據用途可進行合金調整如 5052、6061 等系列。')} onMouseLeave={stopSpeech}>根據用途可進行合金調整如 5052、6061 等系列。</li>
+              <li onMouseEnter={() => speak('表面可做鏡面、霧面、花紋板等多種處理。')} onMouseLeave={stopSpeech}>表面可做鏡面、霧面、花紋板等多種處理。</li>
             </ol>
           </section>
 
           <section>
-            <h2>⭐ 材料特性</h2>
+            <h2 onMouseEnter={() => speak('材料特性')} onMouseLeave={stopSpeech}>⭐ 材料特性</h2>
             <ul>
-              <li>重量輕、強度佳。 </li>
-              <li>抗腐蝕性優異。 </li>
-              <li>良好導電導熱性。 </li>
-              <li>可塑性高，適合多樣加工。 </li>
+              <li onMouseEnter={() => speak('重量輕、強度佳。')} onMouseLeave={stopSpeech}>重量輕、強度佳。</li>
+              <li onMouseEnter={() => speak('抗腐蝕性優異。')} onMouseLeave={stopSpeech}>抗腐蝕性優異。</li>
+              <li onMouseEnter={() => speak('良好導電導熱性。')} onMouseLeave={stopSpeech}>良好導電導熱性。</li>
+              <li onMouseEnter={() => speak('可塑性高，適合多樣加工。')} onMouseLeave={stopSpeech}>可塑性高，適合多樣加工。</li>
             </ul>
           </section>
 
           <section>
-            <h2>🏭 適用領域</h2>
+            <h2 onMouseEnter={() => speak('適用領域')} onMouseLeave={stopSpeech}>🏭 適用領域</h2>
             <ul>
-              <li>航空與汽車工業。 </li>
-              <li>電子產品外殼。 </li>
-              <li>建築裝潢與隔熱板。 </li>
-              <li>餐廚器具、家電面板。 </li>
+              <li onMouseEnter={() => speak('航空與汽車工業。')} onMouseLeave={stopSpeech}>航空與汽車工業。</li>
+              <li onMouseEnter={() => speak('電子產品外殼。')} onMouseLeave={stopSpeech}>電子產品外殼。</li>
+              <li onMouseEnter={() => speak('建築裝潢與隔熱板。')} onMouseLeave={stopSpeech}>建築裝潢與隔熱板。</li>
+              <li onMouseEnter={() => speak('餐廚器具、家電面板。')} onMouseLeave={stopSpeech}>餐廚器具、家電面板。</li>
             </ul>
           </section>
         </div>
-        <div className="spcc-image">
+
+        <div className="al-image">
           <img src="./AL.png" alt="AL 鋁板" />
+        </div>
+      </div>
+
+      <div className="al-bee-floating">
+        <div className="al-bee-inner">
+          <div className="al-bee-speech">點擊段落會播放語音!!</div>
+          <img src="./bee.png" alt="Bee" className="al-bee-image" />
         </div>
       </div>
     </div>

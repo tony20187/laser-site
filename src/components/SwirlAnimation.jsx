@@ -20,12 +20,12 @@ const SwirlAnimation = () => {
     if (currentStep < messages.length) {
       const utter = new SpeechSynthesisUtterance(messages[currentStep]);
       utter.lang = 'zh-TW';
-      utter.rate = rates[currentStep]; // 🔑 依照索引套用對應語速
+      utter.rate = rates[currentStep];
       window.speechSynthesis.speak(utter);
 
       const timer = setTimeout(() => {
         setCurrentStep(prev => prev + 1);
-      }, 2500); // 語速變動時，必要時可依實際唸完時間再調整
+      }, 2500);
 
       return () => {
         clearTimeout(timer);
@@ -41,6 +41,10 @@ const SwirlAnimation = () => {
 
   return (
     <div className="swirl-container">
+      {/* ✅ 新增圖案：左上角與右下角 */}
+      <img src="./A-05-01-1.png" className="hexagon-decoration-left" alt="左上裝飾" />
+      <img src="./A-05-01-2.png" className="hexagon-decoration-right" alt="右下裝飾" />
+
       <div className={`bee ${currentStep >= messages.length ? 'shrink-and-rotate' : ''}`} />
       {currentStep < messages.length && (
         <div className="dialog-box">

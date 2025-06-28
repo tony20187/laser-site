@@ -12,7 +12,7 @@
 .howitworks-left {
   flex: 1;
   padding-right: 40px;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1.8;
   color: #333;
   max-width: 50%;
@@ -23,7 +23,7 @@
 .howitworks-right {
   flex: 1;
   padding-left: 40px;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1.8;
   color: #333;
   max-width: 50%;
@@ -34,7 +34,7 @@
 .howitworks-left h3,
 .howitworks-right h3 {
   color: #b45309;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.3rem; /* 縮小標題與段落間距 */
 }
 
@@ -59,26 +59,66 @@
   margin-top: 20px;
 }
 
-/* === ✅ 固定右上角的重聽一次按鈕 === */
-.listen-again-btn {
-  position: fixed;    /* ✅ 固定位置！ */
-  top: 80px;
-  right: 50px;
-  padding: 12px 20px;
-  font-size: 1.5rem;
-  background-color: #fcd34d;
-  color: #333;
-  border: none;
-  border-radius: 8px;
+
+
+
+.howitworks-left p:hover,
+.howitworks-left h1:hover,
+.howitworks-left h3:hover,
+.howitworks-left li:hover,
+.howitworks-right li:hover,
+.howitworks-right h3:hover {
+  background-color: #f5f5f5;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease;
-  z-index: 9999;   /* ✅ 永遠在最上層 */
 }
 
-.listen-again-btn:hover {
-  background-color: #fbbf24;
+/* 🐝 HowItWorks 專用蜜蜂與對話框 */
+.HIWbee-floating-hint {
+  position: fixed;
+  bottom: -50px;     /* ✅ 位置可自訂 */
+  right: 1000px;
+  z-index: 9999;
+  pointer-events: none;
 }
+
+.HIWbee-floating-hint-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.HIWbee-speech-bubble {
+  position: absolute;
+  bottom: 60%;
+  left: -300px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.HIWbee-image {
+  width: 400px;
+  height: auto;
+  animation: floatHIWbee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatHIWbee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 
 /* === RWD === */
 @media (max-width: 768px) {

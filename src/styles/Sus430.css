@@ -1,54 +1,67 @@
-/* ✅ Sus430.css：符合 SUS304 標準風格 */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
 
 .sus430-detail-container {
+  padding: 20px 20px;
   background-color: #fff9e6;
-  padding: 40px 20px;
-  font-family: 'Segoe UI', sans-serif;
   min-height: 100vh;
+  overflow-y: auto;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .sus430-title {
-  font-size: 2.5rem;
-  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
   color: #b45309;
-  margin-bottom: 30px;
 }
 
 .sus430-content {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 40px;
 }
 
 .sus430-text {
   flex: 1 1 500px;
-  max-width: 600px;
-  font-size: 1.4rem;
-  color: #444;
+  max-width: 800px;
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #333;
 }
 
 .sus430-text section {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .sus430-text h2 {
-  color: #f59e0b;
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: #b45309;
+  padding-bottom: 5px;
 }
 
 .sus430-text ul,
 .sus430-text ol {
-  padding-left: 20px;
-  line-height: 1.6;
+  padding-left: 24px;
 }
 
-/* ✅ 圖片區塊：無陰影、無圓角、自然融入 */
+.sus430-text li {
+  margin-bottom: 16px;
+}
+
 .sus430-image {
   flex: 1 1 300px;
-  max-width: 500px;
+  max-width: 300px;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -67,7 +80,58 @@
   background: transparent;
 }
 
-/* ✅ 響應式設計：手機版上下排列 */
+.sus430-text p:hover,
+.sus430-text li:hover,
+.sus430-text h2:hover {
+  background-color: #f0f0f0;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sus430-bee-floating {
+  position: fixed;
+  bottom: -50px;
+  left: 700px; 
+  right: 30px;
+  z-index: 9999;
+}
+
+
+.sus430-bee-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.sus430-bee-speech {
+  position: absolute;
+  bottom: 70%;
+  left: -260px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sus430-bee-image {
+  width: 400px;
+  height: auto;
+  animation: floatBee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatBee {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
 @media (max-width: 768px) {
   .sus430-content {
     flex-direction: column;
@@ -81,5 +145,19 @@
 
   .sus430-image img {
     max-width: 90%;
+  }
+
+  .sus430-bee-floating {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .sus430-bee-speech {
+    font-size: 16px;
+    left: -160px;
+  }
+
+  .sus430-bee-image {
+    width: 100px;
   }
 }

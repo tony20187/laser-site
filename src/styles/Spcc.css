@@ -1,55 +1,70 @@
-/* ✅ Spcc.css：符合 SUS304 自然融入風格設計 */
+/* ✅ Spcc.css：同步 AL 樣式，自然風格 + 響應 + 蜜蜂固定位置 */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
 
 .spcc-detail-container {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background-color: #fff9e6;
   min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
+  overflow-y: auto;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .spcc-title {
-  font-size: 2.5rem;
-  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
   color: #b45309;
-  margin-bottom: 30px;
 }
 
 .spcc-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
-/* 文字區 */
+/* ✅ 文字區 */
 .spcc-text {
   flex: 1 1 500px;
-  max-width: 600px;
-  font-size: 1.4rem;
-  color: #444;
+  max-width: 800px;
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #333;
 }
 
 .spcc-text section {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 .spcc-text h2 {
-  color: #f59e0b;
-  font-size: 1.6rem;
-  margin-bottom: 12px;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: #b45309;
+  padding-bottom: 5px;
 }
 
 .spcc-text ul,
 .spcc-text ol {
-  padding-left: 20px;
-  line-height: 1.6;
+  padding-left: 24px;
 }
 
-/* ✅ 圖片區：不漂浮、無邊框、無圓角 */
+.spcc-text li {
+  margin-bottom: 16px;
+}
+
+/* ✅ 圖片自然貼合風格 */
 .spcc-image {
   flex: 1 1 300px;
-  max-width: 500px;
+  max-width: 300px;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -68,7 +83,62 @@
   background: transparent;
 }
 
-/* ✅ 響應式排版：手機版上下排列 */
+/* ✅ 段落 hover 變色 */
+.spcc-text p:hover,
+.spcc-text li:hover,
+.spcc-text h2:hover {
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* ✅ 蜜蜂提示固定在右下角 */
+.spcc-bee-floating {
+  position: fixed;
+  bottom: -50px;
+  left: 700px; 
+  right: 30px;
+  z-index: 9999;
+}
+
+.spcc-bee-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.spcc-bee-speech {
+  position: absolute;
+  bottom: 70%;
+  left: -260px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.spcc-bee-image {
+  width: 400px;
+  height: auto;
+  animation: floatALbee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatALbee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ✅ 響應式設計 */
 @media (max-width: 768px) {
   .spcc-content {
     flex-direction: column;
@@ -82,5 +152,19 @@
 
   .spcc-image img {
     max-width: 90%;
+  }
+
+  .spcc-bee-floating {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .spcc-bee-speech {
+    font-size: 16px;
+    left: -160px;
+  }
+
+  .spcc-bee-image {
+    width: 100px;
   }
 }

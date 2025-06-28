@@ -43,25 +43,64 @@
   opacity: 100;
 }
 
-.replay-button {
-  position: fixed;
-  top: 80px;
-  right: 40px;
-  background: #fcd34d;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1.2rem;
+.machine-text li:hover,
+.machine-text h1:hover,
+.machine-text h2:hover,
+.machine-text p:hover {
+  background-color: #f5f5f5;
   cursor: pointer;
-  z-index: 999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
-.replay-button:hover {
-  background: #fbbf24;
+/* 🐝 蜜蜂+對話框區域 */
+.bee-floating-hint {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  pointer-events: none;
 }
 
-/* === ✅ RWD === */
+.bee-floating-hint-inner {
+  position: relative;
+  display: inline-block;
+}
+
+/* 💬 對話框在蜜蜂左上角 */
+.bee-speech-bubble {
+  position: absolute;
+  bottom: 70%;
+  left: -280px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 🐝 蜜蜂圖 */
+.bee-image {
+  width: 100px;
+  height: auto;
+  animation: floatBee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatBee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ✅ 響應式設定 */
 @media (max-width: 992px) {
   .machine-detail-container {
     flex-direction: column;

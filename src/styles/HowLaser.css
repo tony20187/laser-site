@@ -33,7 +33,7 @@
   justify-content: center;
   align-items: flex-start;
   max-width: 40%;
-  margin-top: 90px; /* ✅ ✅ 加這行: 圖片往下推 */
+  margin-top: 90px;
 }
 
 .howlaser-image img {
@@ -44,27 +44,64 @@
   opacity: 100;
 }
 
-/* ✅ 重聽一次按鈕固定在右上 */
-.listen-again-btn {
-  position: fixed;
-  top: 80px;
-  right: 50px;
-  background: #fcd34d;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1.2rem;
+/* ✅ 段落滑過背景色 */
+.howlaser-text h1:hover,
+.howlaser-text h2:hover,
+.howlaser-text h3:hover,
+.howlaser-text p:hover,
+.howlaser-text li:hover {
+  background-color: #f0f0f0;
   cursor: pointer;
-  z-index: 999;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease;
 }
 
-.listen-again-btn:hover {
-  background: #fbbf24;
+
+/* ✅ 蜜蜂+對話框 */
+.HLbee-floating-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 800px;
+  z-index: 9999;
+  pointer-events: none;
 }
 
-/* ✅ RWD: 單欄排版 + 按鈕大小 + 圖片置中 */
+.HLbee-floating-hint-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.HLbee-speech-bubble {
+  position: absolute;
+  bottom: 70%;
+  left: -260px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.HLbee-image {
+  width: 400px;
+  height: auto;
+  animation: floatHLbee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatHLbee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ✅ RWD */
 @media (max-width: 768px) {
   .howlaser-container {
     flex-direction: column;
@@ -78,14 +115,21 @@
 
   .howlaser-image {
     max-width: 100%;
-    margin-top: 30px; /* ✅ RWD 也往下推一點 */
+    margin-top: 30px;
     justify-content: center;
   }
 
-  .listen-again-btn {
-    top: 20px;
+  .HLbee-floating-hint {
+    bottom: 20px;
     right: 20px;
-    padding: 10px 16px;
-    font-size: 1rem;
+  }
+
+  .HLbee-speech-bubble {
+    font-size: 18px;
+    left: -200px;
+  }
+
+  .HLbee-image {
+    width: 70px;
   }
 }

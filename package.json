@@ -1,9 +1,8 @@
 {
   "name": "laser-site",
-  "version": "2025.6.22-3",
+  "version": "2025.6.28-1",
   "description": "華谷電機專用雷射應用程式",
   "author": "機工課雷射組-副組長 李書宏 <tony20187@gmail.com>",
-  "homepage": "https://tony20187.github.io/laser-site/",
   "main": "main.js",
   "scripts": {
     "dev": "vite",
@@ -11,11 +10,10 @@
     "preview": "vite preview",
     "start": "electron .",
     "serve": "npm run build && npm run start",
-    "dist": "electron-builder",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dist": "electron-builder"
   },
   "build": {
+    
     "productName": "華谷電機雷射世界",
     "appId": "com.huagu.lasersite",
     "copyright": "Copyright © 2025 Tony",
@@ -46,7 +44,6 @@
   "devDependencies": {
     "electron": "^27.0.0",
     "electron-builder": "^24.13.3",
-    "gh-pages": "^6.3.0",
     "vite": "^4.5.14"
   }
 }

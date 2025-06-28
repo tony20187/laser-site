@@ -14,7 +14,7 @@
 
 .text-block {
   flex: 1 1 500px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #333;
 }
 
@@ -23,6 +23,17 @@
   color: #b45309;
   margin-bottom: 10px;
 }
+
+
+.text-block p:hover,
+.text-block li:hover,
+.text-block h2:hover,
+.text-block h3:hover {
+  background-color: #fffef2; /* 淡黃色 */
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 
 .text-block ul {
   padding-left: 20px;
@@ -40,4 +51,88 @@
   max-width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+/* 🐝 ASF專用蜜蜂與對話框 */
+.ASFbee-floating-hint {
+  position: fixed;
+  bottom: 0px;
+  right: 500px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.ASFbee-floating-hint-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.bee-speech-bubble {
+  position: absolute;
+  bottom: 60%;
+  left: -300px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bee-image {
+  width: 100px;
+  height: auto;
+  animation: floatBee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatBee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ✅ RWD：平板 */
+@media (max-width: 992px) {
+  .asf-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .ASFbee-floating-hint {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .bee-speech-bubble {
+    font-size: 24px;
+    left: -240px;
+  }
+
+  .bee-image {
+    width: 80px;
+  }
+}
+
+/* ✅ RWD：手機 */
+@media (max-width: 576px) {
+  .text-block {
+    font-size: 1rem;
+  }
+
+  .bee-speech-bubble {
+    font-size: 18px;
+    left: -200px;
+  }
+
+  .bee-image {
+    width: 60px;
+  }
 }
