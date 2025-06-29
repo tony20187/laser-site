@@ -76,12 +76,12 @@ function MainUI() {
         </button>
 
         <button
-          className={`menu-button ${animate ? "animate-crane" : ""}`}
-          onMouseEnter={() => speak("天車介紹")}
+          className={`menu-button ${animate ? "animate-quiz" : ""}`}
+          onMouseEnter={() => speak("問答遊戲")}
           onMouseLeave={stop}
-          onClick={() => navigate("/crane")}
+          onClick={() => navigate("/quiz")}
         >
-          天車介紹
+          問答遊戲
         </button>
       </div>
     </div>

@@ -1,0 +1,133 @@
+/* ✅ 頁面整體背景與版面配置 */
+.quiz-game-full-container {
+  background-color: #fff9e6;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ✅ 關鍵：移除捲動條 */
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+.start-screen {
+  text-align: center;
+  padding: 40px;
+}
+
+/* ✅ 左上角背景圖片 */
+.QGimg-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ✅ 右下角背景圖片 */
+.QGimg-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 450px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ✅ 主內容卡片 */
+.quiz-game-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 40px 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ✅ 題目樣式 */
+.question-block {
+  margin-bottom: 20px;
+}
+
+.question-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-bottom: 30px;
+}
+
+/* ✅ 選項按鈕 */
+.options-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quiz-btn {
+  font-size: 1.4rem;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: #facc15;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-btn:hover {
+  background-color: #fbbf24;
+  transform: scale(1.05);
+}
+
+/* ✅ 結果區塊 */
+.score-block h2 {
+  font-size: 1.8rem;
+  color: #15803d;
+  margin-bottom: 10px;
+}
+
+.score-block p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+/* ✅ 按鈕群組 */
+.button-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ✅ 響應式處理 RWD */
+@media (max-width: 768px) {
+  .QGimg-top-left,
+  .QGimg-bottom-right {
+    width: 160px;
+  }
+
+  .quiz-btn {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+  }
+
+  .question-title {
+    font-size: 1.5rem;
+  }
+
+  .score-block h2 {
+    font-size: 1.6rem;
+  }
+}

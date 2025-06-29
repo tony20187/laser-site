@@ -1,10 +1,22 @@
-/* ✅ SheetMaterials.css */
+/* ✅ SheetMaterials.css - 移除捲動條＋強化RWD控制 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ⛔ 保險再加一層 */
+}
 
 .sheet-container {
   padding: 30px 10px;
   background-color: #fff9e6;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .sheet-title {
@@ -18,10 +30,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px 12px; /* 調整行與列的間距 */
+  gap: 16px 12px;
 }
 
-/* 卡片樣式 */
+/* ✅ 卡片樣式 */
 .sheet-card {
   width: 220px;
   background-color: #ffffff;
@@ -51,7 +63,7 @@
   color: #2d3748;
 }
 
-/* 蜜蜂區塊樣式 */
+/* ✅ 蜜蜂 + 對話框 */
 .bee-section {
   margin-top: 40px;
   position: relative;
@@ -67,11 +79,10 @@
   position: relative;
 }
 
-/* 對話框位於蜜蜂圖片左上角 */
 .bee-dialog {
   position: absolute;
-  top: -20;
-  left: calc(50% - 180px); /* 控制對話框位置：圖片左上角 */
+  top: 20%;
+  left: calc(50% - 180px);
   transform: translateX(-100%) translateY(-50%);
   width: 280px;
   padding: 10px;
@@ -87,34 +98,34 @@
   z-index: 10;
 }
 
-
-/* 左上裝飾 */
+/* ✅ 裝飾圖位置設定 */
 .decor-left {
   position: absolute;
-  top: 10px;  /* 可自行調整 */
-  left: 0px; /* 可自行調整 */
+  top: 10px;
+  left: 0px;
   z-index: 1;
 }
 
 .decor-left img {
-  width: 290px; /* 可自行調整大小 */
-  opacity: 1; /* 可自行調整透明度 */
+  width: 330px;
+  max-width: 100%;
+  height: auto;
 }
 
-/* 右下裝飾 */
 .decor-right {
   position: absolute;
-  bottom: 20px; /* 可自行調整 */
-  right: 20px;  /* 可自行調整 */
+  bottom: 0px;
+  right: 0px;
   z-index: 1;
 }
 
 .decor-right img {
-  width: 450px; /* 可自行調整大小 */
-  opacity: 1; /* 可自行調整透明度 */
+  width: 450px;
+  max-width: 100vw;
+  height: auto;
 }
 
-/* 響應式處理 */
+/* ✅ RWD 響應式 */
 @media (max-width: 900px) {
   .sheet-card {
     width: 45%;
@@ -124,5 +135,19 @@
 @media (max-width: 600px) {
   .sheet-card {
     width: 90%;
+  }
+
+  .decor-left img,
+  .decor-right img {
+    width: 180px;
+  }
+
+  .bee-image {
+    height: 300px;
+  }
+
+  .bee-dialog {
+    width: 240px;
+    font-size: 1.1rem;
   }
 }

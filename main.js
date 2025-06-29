@@ -17,7 +17,7 @@ function createWindow() {
     minimizable: true,           // ✅ 可最小化
     maximizable: true,           // ✅ 可最大化
     closable: true,              // ✅ 可關閉
-    title: '華谷電機 機工課-雷射組 | 版本: EXE 2025.6.28-1 | 製作時間 2025/6/28|製作人:李書宏',
+    title: '華谷電機 機工課-雷射組 | 版本: EXE 2025.6.29-1 | 製作時間 2025/6/29|製作人:李書宏',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },

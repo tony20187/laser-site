@@ -81,7 +81,7 @@
   color: #222;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
   animation: fadeIn 0.6s ease-in-out;
-  max-width: 300px;
+  max-width: 320px;
   z-index: 10;
 }
 

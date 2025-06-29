@@ -17,6 +17,7 @@ function Navbar() {
               <Link to="/process">工作流程</Link>
               <Link to="/SheetMaterials">板材介紹</Link>
               <Link to="/team">團隊介紹</Link>
+              <Link to="/quiz">問答遊戲</Link>
             
       </div>
 

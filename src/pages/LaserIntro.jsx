@@ -4,10 +4,10 @@ import Navbar from "../components/Navbar";
 import "../styles/LaserIntro.css";
 
 const laserTopics = [
-  { id: 1, icon: "🌈", title: "何謂雷射", route: "/howlaser" },
-  { id: 2, icon: "🔬", title: "切割比較", route: "/CuttingComparison" },
-  { id: 3, icon: "💡", title: "雷射原理", route: "/HowItWorks" },
-  { id: 4, icon: "📖", title: "雷射應用", route: "/Applications" },
+  { id: 1, img: "/何謂雷射.png", title: "何謂雷射", route: "/howlaser" },
+  { id: 2, img: "/切割比較.png", title: "切割比較", route: "/CuttingComparison" },
+  { id: 3, img: "/雷射原理.png", title: "雷射原理", route: "/HowItWorks" },
+  { id: 4, img: "/雷射應用.png", title: "雷射應用", route: "/Applications" },
 ];
 
 function LaserIntro() {
@@ -32,10 +32,13 @@ function LaserIntro() {
     const timer = setTimeout(() => {
       speakText("請點擊上方圖案進入介紹");
     }, 500);
-    return () => clearTimeout(timer);
+
+    return () => {
+      clearTimeout(timer);
+      stopSpeech(); // ✅ 離開頁面時停止語音
+    };
   }, []);
 
-  // ✅ 移開卡片 → 播提示
   const handleMouseLeave = () => {
     stopSpeech();
     speakText("請點擊上方圖案進入介紹");
@@ -45,10 +48,7 @@ function LaserIntro() {
     <div className="laser-intro-container">
       <Navbar />
 
-      {/* 左上背景圖 */}
       <img src="./A-05-01-1.png" alt="Left Top Decoration" className="bg-left-top" />
-
-      {/* 右下背景圖 */}
       <img src="./A-05-01-2.png" alt="Right Bottom Decoration" className="bg-right-bottom" />
 
       <h2 className="page-title">認識雷射</h2>
@@ -62,7 +62,7 @@ function LaserIntro() {
             onMouseEnter={() => speakText(topic.title)}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="icon">{topic.icon}</div>
+            <img src={topic.img} alt={topic.title} className="card-img" />
             <div className="title">{topic.title}</div>
           </div>
         ))}

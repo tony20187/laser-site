@@ -26,6 +26,7 @@ import Applications from "./pages/Applications";
 import HowItWorks from "./pages/HowItWorks";
 import HowLaser from "./pages/HowLaser";
 import Team from "./pages/Team";
+import QuizGame from "./pages/QuizGame";
 
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
         <Route path="/HowItWorks" element={<HowItWorks />} />
         <Route path="/HowLaser" element={<HowLaser />} />
         <Route path="/team" element={<Team />} />
-       
+        <Route path="/quiz" element={<QuizGame />} />
       </Routes>
     </HashRouter>
   );

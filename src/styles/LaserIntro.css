@@ -1,12 +1,14 @@
 .laser-intro-container {
-  position: relative; /* ⚡ 必須要 relative，方便內部絕對定位 */
+  position: relative;
   background-color: #fff9e6;
   min-height: 100vh;
   padding: 80px 40px 40px;
   box-sizing: border-box;
-  overflow: hidden; /* ⚡ 避免圖片溢出 */
+  overflow-x: hidden;  /* ✅ 避免水平捲動 */
+  overflow-y: auto;    /* ✅ 可視需要保留垂直捲動 */
 }
 
+/* 頁面標題 */
 .page-title {
   text-align: center;
   font-size: 2.2rem;
@@ -15,6 +17,7 @@
   margin-bottom: 40px;
 }
 
+/* 卡片容器 */
 .card-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -22,9 +25,10 @@
   gap: 30px;
 }
 
+/* 卡片樣式 */
 .intro-card {
-  width: 300px;
-  height: 150px;
+  width: 280px;
+  max-width: 90vw;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -38,17 +42,23 @@
   transform: translateY(-8px);
 }
 
-.icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+/* 圖片取代 icon */
+.card-img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
+/* 卡片標題 */
 .title {
   font-size: 1.8rem;
   font-weight: 600;
+  color: #333;
 }
 
-/* 🐝 蜜蜂區塊樣式 */
+/* 🐝 蜜蜂區塊 */
 .bee-section {
   margin-top: 20px;
   position: relative;
@@ -56,13 +66,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  flex-wrap: wrap;
 }
 
+/* 蜜蜂圖片不超出頁面 */
 .bee-image {
-  height: 450px;
+  max-height: 300px;
   width: auto;
 }
 
+/* 蜜蜂對話框 */
 .bee-dialog {
   position: absolute;
   top: 50px;
@@ -76,41 +89,63 @@
   font-weight: bold;
   color: #222;
   box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
 }
 
-/* ✅ 左上角背景圖片 */
-.top-left-bg {
+/* 左上角背景圖 */
+.bg-left-top {
   position: absolute;
-  top: 10px;    /* 可以自行調整上下距離 */
-  left: 20px;   /* 可以自行調整左右距離 */
-  width: 330px; /* 控制大小 */
-  z-index: 0;   /* 在最底層 */
-  pointer-events: none; /* 不擋住點擊 */
-  opacity: 0.8; /* 如需要可調透明度 */
-}
-
-/* ✅ 右下角背景圖片 */
-.bottom-right-bg {
-  position: absolute;
-  bottom: 20px;  /* 可以自行調整上下距離 */
-  right: 20px;   /* 可以自行調整左右距離 */
-  width: 550px;  /* 控制大小 */
-  z-index: 0;    /* 在最底層 */
+  top: 10px;
+  left: 20px;
+  width: 330px;
+  z-index: 0;
   pointer-events: none;
   opacity: 0.8;
 }
 
-/* ✅ RWD: 畫面縮小時自動縮小圖片 */
+/* 右下角背景圖 */
+.bg-right-bottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 550px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ✅ 響應式設計 */
 @media (max-width: 768px) {
-  .top-left-bg {
+  .bg-left-top {
     width: 120px;
     top: 10px;
     left: 10px;
   }
 
-  .bottom-right-bg {
+  .bg-right-bottom {
     width: 150px;
     bottom: 10px;
     right: 10px;
+  }
+
+  .intro-card {
+    width: 90%;
+    padding: 16px;
+  }
+
+  .card-img {
+    max-height: 140px;
+  }
+
+  .bee-dialog {
+    position: static;
+    margin-bottom: 12px;
+    width: auto;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .bee-image {
+    max-height: 220px;
   }
 }

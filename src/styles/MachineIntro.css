@@ -1,4 +1,13 @@
 /* MachineIntro.css */
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ✅ 防止水平捲動條出現 */
+}
 
 .machine-intro-container {
   background-color: #fff9e6;
@@ -99,34 +108,30 @@
 /* === 左上角背景圖 === */
 .bg-top-left {
   position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 400px;   /* 依需求調整 */
+  top: 0;
+  left: 0;
+  width: 400px;
+  max-width: 100vw;
   height: auto;
-  z-index: 0;     /* 在所有內容之下 */
-  pointer-events: none;  /* 不擋住點擊 */
+  z-index: 0;
+  pointer-events: none;
 }
+
 
 /* === 右下角背景圖 === */
 .bg-bottom-right {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 450px;   /* 依需求調整 */
+  width: 450px;
+  max-width: 100vw;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 確保卡片與文字在背景上面 */
-.machine-intro-container {
-  position: relative;  /* 讓絕對定位的背景依附這裡 */
-  background-color: #fff9e6;
-  min-height: 100vh;
-  padding: 80px 40px 40px;
-  box-sizing: border-box;
-  z-index: 1;
-}
+
+
 
 
 /* ✅ RWD: 手機適應 */

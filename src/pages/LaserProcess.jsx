@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import "../styles/LaserProcess.css"; // 別忘了連結
+import "../styles/LaserProcess.css";
 
 const processSteps = [
-  { id: 1, icon: "🔧", title: "步驟一：建立設計圖", route: "/step1" },
-  { id: 2, icon: "🖥️", title: "步驟二：轉換程式碼", route: "/step2" },
-  { id: 3, icon: "💡", title: "步驟三：執行雷射切割", route: "/step3" },
-  { id: 4, icon: "✅", title: "步驟四：取出成品", route: "/step4" },
+  { id: 1, image: "./建立設計.png", title: "步驟一：建立設計圖", route: "/step1" },
+  { id: 2, image: "./轉換程式.png", title: "步驟二：轉換程式碼", route: "/step2" },
+  { id: 3, image: "./雷射機台.png", title: "步驟三：執行雷射切割", route: "/step3" },
+  { id: 4, image: "./切割完成.png", title: "步驟四：取出成品", route: "/step4" },
 ];
 
 function LaserProcess() {
@@ -34,7 +34,6 @@ function LaserProcess() {
     window.speechSynthesis.cancel();
   };
 
-  // ✅ 滑鼠移開 → 自動播提示
   const handleMouseLeave = () => {
     stopSpeaking();
     speakText("請點擊上方圖案進入介紹");
@@ -43,11 +42,7 @@ function LaserProcess() {
   return (
     <div className="laser-process-container">
       <Navbar />
-
-      {/* 左上背景圖 */}
       <img src="./A-05-01-1.png" alt="bg1" className="bg-left-top" />
-
-      {/* 右下背景圖 */}
       <img src="./A-05-01-2.png" alt="bg2" className="bg-right-bottom" />
 
       <h2 className="page-title">雷射切割流程圖</h2>
@@ -61,7 +56,7 @@ function LaserProcess() {
             onMouseEnter={() => speakText(step.title)}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="icon">{step.icon}</div>
+            <img src={step.image} alt={step.title} className="step-image" />
             <div className="title">{step.title}</div>
           </div>
         ))}

@@ -95,15 +95,21 @@
 }
 
 .animate-materials {
-  transform: scale(1) translate(14vw, -25vh);
+  transform: scale(1) translate(10vw, -35vh);
   opacity: 1;
   transition-delay: 0.4s;
 }
 
 .animate-team {
-  transform: scale(1) translate(18vw, -0vh);
+  transform: scale(1) translate(18vw, -10vh);
   opacity: 1;
   transition-delay: 0.5s;
+}
+
+.animate-quiz {
+  transform: scale(1) translate(10vw, 19vh);
+  opacity: 1;
+  transition-delay: 0.6s;
 }
 
 
