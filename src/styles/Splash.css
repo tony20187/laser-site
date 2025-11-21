@@ -1,0 +1,101 @@
+.splash-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("/背景.png") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+/* 右上角：雷射組Logo */
+.logo-topright {
+  position: absolute;
+  top: min(20px, 2vh);
+  right: min(20px, 2vw);
+}
+.logo-topright img {
+  width: clamp(100px, 16vw, 220px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* 中央：華谷Logo */
+.logo-center {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+}
+.logo-center img {
+  width: clamp(260px, 35vw, 700px);
+  height: auto;
+  display: block;
+}
+
+/* 主按鈕 */
+.enter-button {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  padding: clamp(10px, 1.2vw, 18px) clamp(24px, 2.6vw, 48px);
+  font-size: clamp(18px, 2.4vw, 36px);
+  font-weight: 700;
+  color: #111;
+  background: linear-gradient(180deg, #ffe082 0%, #fdd835 100%);
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+.enter-button:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: linear-gradient(180deg, #ffec80 0%, #ffca28 100%);
+}
+
+/* 底部標語 */
+.slogan-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: min(40px, 4vh);
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.slogan-zh {
+  font-size: clamp(16px, 1.8vw, 28px);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vw, 12px);
+}
+.slogan-en {
+  font-size: clamp(14px, 1.4vw, 22px);
+  opacity: 0.9;
+}
+
+/* 手機直式微調 */
+@media (max-aspect-ratio: 10/13) {
+  .logo-center {
+    top: 40%;
+  }
+  .enter-button {
+    top: 64%;
+  }
+}
+
+/* 超寬螢幕微調 */
+@media (min-aspect-ratio: 21/9) {
+  .logo-center {
+    top: 44%;
+  }
+  .enter-button {
+    top: 58%;
+  }
+}

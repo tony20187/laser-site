@@ -1,0 +1,51 @@
+/* Page 基本 */
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+
+.step3-page {
+  background-color: #fff9e6;
+  padding: clamp(16px, 3vw, 30px);
+  min-height: 100vh;
+}
+
+/* 標題/說明：原樣RWD化 */
+.step3-title {
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: #b45309;
+  margin-bottom: clamp(12px, 2.2vw, 20px);
+}
+.step3-description {
+  text-align: center;
+  font-size: clamp(1.05rem, 1.6vw, 1.7rem);
+  max-width: min(1800px, 92vw);
+  margin: 0 auto clamp(16px, 3vw, 30px);
+  line-height: 1.6;
+}
+
+/* 影片區：兩支置中同排，小螢幕改單排 */
+.step3-gallery {
+  display: flex;
+  justify-content: center;   /* ✅ 置中 */
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px);
+  max-width: min(1800px, 96vw);
+  margin: 0 auto;
+}
+
+/* 影片：固定等比 16:9、寬度自適應、兩支同高 */
+.step3-gallery video {
+  width: clamp(360px, 42vw, 560px); /* ✅ 桌機兩支剛好同排 */
+  aspect-ratio: 16 / 9;             /* ✅ 等比 */
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 平板/手機：改單排滿版寬 */
+@media (max-width: 768px) {
+  .step3-gallery video {
+    width: min(640px, 96vw); /* ✅ 一排一個、置中 */
+  }
+}

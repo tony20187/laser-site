@@ -1,0 +1,63 @@
+/* === Page 基本 === */
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+.step-page {
+  background-color: #fff9e6;
+  padding: clamp(16px, 3vw, 30px);
+  min-height: 100vh;
+}
+
+/* === 標題 / 說明 === */
+.step-title {
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 3rem);
+  color: #b45309;
+  margin-bottom: clamp(12px, 2.2vw, 20px);
+}
+.step-description {
+  text-align: center;
+  font-size: clamp(1.05rem, 1.6vw, 1.7rem);
+  max-width: min(1800px, 92vw);
+  margin: 0 auto clamp(16px, 3vw, 30px);
+  line-height: 1.6;
+}
+
+/* === 圖片區（固定 3 欄，等寬等高、RWD 縮放）=== */
+.image-gallery{
+  /* 改為 3 欄 Grid，無論螢幕大小都保持同一排 */
+  --max-w: min(1800px, 96vw);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 永遠三欄 */
+  gap: clamp(12px, 2vw, 24px);
+  width: var(--max-w);
+  margin: 0 auto;            /* 置中 */
+  align-items: start;
+  justify-items: center;
+}
+
+/* 三張圖等寬等高：用固定顯示比例 + object-fit:contain（不裁切） */
+.image-gallery img{
+  width: 100%;               /* 跟著欄位自動縮放 */
+  max-width: none;           /* 交給 Grid 控制 */
+  aspect-ratio: 16 / 10;     /* ✅ 統一顯示比例（可改 4/3、3/2…） */
+  object-fit: contain;       /* ✅ 不裁切，必要時上下/左右留邊 */
+  background: #000;          /* 留邊時更乾淨（可移除） */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+
+/* === 右上角「重聽一次」按鈕（固定定位＋RWD）=== */
+.replay-button {
+  position: fixed;
+  top: clamp(56px, 8vh, 80px);
+  right: calc(env(safe-area-inset-right, 0px) + clamp(12px, 3vw, 40px));
+  background: #fcd34d;
+  border: none;
+  border-radius: 8px;
+  padding: clamp(8px, 1.8vw, 12px) clamp(12px, 3vw, 20px);
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  top:  calc(env(safe-area-inset-top, 0px)  + clamp(56px, 8vh, 80px));
+}
+.replay-button:hover { background: #fbbf24; }

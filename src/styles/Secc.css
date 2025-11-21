@@ -1,0 +1,165 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.secc-detail-container {
+  padding: 20px 20px; /* ✅ 減少上方空間讓標題更靠上 */
+  background-color: #fff9e6;
+  min-height: 100vh;
+  overflow-y: auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.secc-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #b45309;
+}
+
+.secc-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.secc-text {
+  flex: 1 1 500px;
+  max-width: 800px;
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: #333;
+}
+
+.secc-text section {
+  margin-bottom: 0px;
+}
+
+.secc-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  color: #b45309;
+  padding-bottom: 5px;
+}
+
+.secc-text ul,
+.secc-text ol {
+  padding-left: 24px;
+}
+
+.secc-text li {
+  margin-bottom: 16px;
+}
+
+.secc-image {
+  flex: 1 1 300px;
+  max-width: 360px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.secc-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.secc-text p:hover,
+.secc-text li:hover,
+.secc-text h2:hover {
+  background-color: #f0f0f0;
+  border: none;
+  box-shadow: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.secc-bee-floating {
+  position: fixed;
+  bottom: -50px;
+  left: 700px; 
+  right: 30px;
+  z-index: 9999;
+}
+
+.secc-bee-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.secc-bee-speech {
+  position: absolute;
+  bottom: 70%;
+  left: -260px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.secc-bee-image {
+  width: 400px;
+  height: auto;
+  animation: floatSECCbee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatSECCbee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .secc-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .secc-text,
+  .secc-image {
+    max-width: 100%;
+  }
+
+  .secc-image img {
+    max-width: 90%;
+  }
+
+  .secc-bee-floating {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .secc-bee-speech {
+    font-size: 16px;
+    left: -160px;
+  }
+
+  .secc-bee-image {
+    width: 100px;
+  }
+}

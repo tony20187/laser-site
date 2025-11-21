@@ -1,0 +1,350 @@
+/* src/styles/MachineView.css ── RWD版：整塊一起縮，小視窗不溢出，外框跟著內容走 */
+
+/* ========= 全域參數 ========= */
+:root{
+  --ink:      #e9f1ff;
+  --bg:       #0b0f14;
+  --glow:     #00eaff;
+  --page-bg:  #fff9e6;
+
+  --spot-bw:  3px;
+
+  --neon-size:   3px;
+  --neon-speed:  4.5s;
+  --neon-radius: 14px;
+}
+
+/* ========= 頁面 ========= */
+.mh-root{
+  background: var(--page-bg);
+  min-height: 100dvh;
+  display:flex;
+  flex-direction:column;          /* 先排 Navbar → 標題 → 主圖 */
+  align-items:center;
+  padding:24px 12px 48px;
+}
+
+/* ===== 標題 + 蜜蜂區塊（導覽列下方） ===== */
+.mh-header{
+  width:100%;
+  max-width:1380px;
+  padding:20px 8px 16px;
+  margin:8px auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;   /* 標題預設置中 */
+  position:relative;        /* 給右側蜜蜂用 */
+}
+
+.mh-title{
+  margin: 20px auto 18px;
+  text-align:center;
+  font-weight:800;
+  color:#b45309;
+  /* 讓 32" ~ 手機 都能合理縮放 */
+  font-size:clamp(2.0rem, 2.2vw, 3.0rem);
+}
+
+/* ===== 右上角蜜蜂＋對話框（獨立控制） ===== */
+.mh-bee{
+  position:absolute;
+  right:-10%;
+  top:550%;
+  transform:translateY(-50%);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  pointer-events:none;        /* 不擋下面熱點；若要可點擊就刪掉 */
+}
+
+.mh-bee-img{
+  /* 最小 120px，隨螢幕放大到最多 220px */
+  width: clamp(240px, 16vw,360px);
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,.35));
+}
+
+.mh-bee-bubble{
+  max-width:clamp(240px, 28vw, 380px);
+  background:rgba(0,0,0,.78);
+  color:#f9fafb;
+  padding: 14px 20px;
+  border-radius:16px;
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+  line-height:1.4;
+  border:1px solid #00eaff;
+  box-shadow:0 0 12px #00eaffaa;
+}
+
+/* 🟦 中等寬度：把蜜蜂稍微拉回畫面內，避免縮小視窗時消失 */
+@media (max-width: 1200px){
+  .mh-bee{
+    right: 0%;
+    top: 400%;
+  }
+}
+
+/* 小螢幕：讓蜜蜂換到標題下方，避免擠到 */
+@media (max-width: 768px){
+  .mh-header{
+    flex-direction:column;
+    gap:6px;
+  }
+  .mh-bee{
+    position:static;
+    transform:none;
+    margin-top:4px;
+  }
+}
+
+/* ========= 主圖區 ========= */
+.mh-wrap{
+  position:relative;
+  width:min(1380px, 95vw);
+  margin: -200px auto 0;  
+  user-select:none;
+}
+
+.mh-img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+/* ========= 熱點：更亮/更爆/更閃 ========= */
+.mh-spot{
+  position:absolute;
+  z-index:6;
+  background:transparent;
+  border: var(--spot-bw) solid transparent;
+  border-radius: var(--neon-radius);
+  cursor:pointer;
+  transition:border-color .18s, box-shadow .18s, background .18s, transform .08s;
+}
+.mh-spot:hover{
+  border-color: var(--glow);
+  background:#00eaff33;
+  box-shadow:
+    0 0 0 4px #00eaff66,
+    0 0 38px #00eafff0,
+    0 0 64px #00eaffaa inset;
+}
+.mh-spot.pressed{ transform:scale(.965); }
+
+/* 點擊漣漪 */
+.mh-spot .ripple{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#00eaffcc;
+  transform:translate(-50%,-50%);
+  animation:ripple .55s ease-out forwards;
+}
+@keyframes ripple{
+  from{opacity:.75; transform:translate(-50%,-50%) scale(1)}
+  to  {opacity:0;   transform:translate(-50%,-50%) scale(14)}
+}
+
+/* 外圈虛線環（閃爍） */
+.mh-spot-ring{
+  position:absolute;
+  inset:calc(-9px - var(--spot-bw));
+  z-index:7;
+  border:3px dashed #00eaffee;
+  border-radius: calc(var(--neon-radius) + 12px);
+  box-shadow: 0 0 22px #00eaffdd, inset 0 0 18px #00eaffaa;
+  animation:ring 1.2s linear infinite;
+  pointer-events:none;
+}
+@keyframes ring{
+  0%  {opacity:.95; transform:scale(1)}
+  100%{opacity:.28; transform:scale(1.08)}
+}
+
+/* ========= 霓虹跑馬燈外框（通用工具） ========= */
+@keyframes neonSpin { to { transform: rotate(360deg); } }
+
+.neon-border{ position:relative; }
+.neon-border::before{
+  content:"";
+  position:absolute;
+  inset:calc(-1 * var(--neon-size));
+  border-radius: var(--neon-radius);
+  padding: var(--neon-size);
+  background:conic-gradient(
+    #00eaff 0%,
+    #00ffd0 14%,
+    #00ffa0 28%,
+    #00ffea 42%,
+    #00eaff 56%,
+    #33e9ff 70%,
+    #66ffff 84%,
+    #00eaff 100%
+  );
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  animation: neonSpin var(--neon-speed) linear infinite;
+  filter:
+    drop-shadow(0 0 14px #00eaff)
+    drop-shadow(0 0 26px #00eaff);
+  pointer-events:none;
+}
+
+/* ========= 模態：整塊RWD ========= */
+.mh-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  backdrop-filter: blur(5px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  z-index:50;
+  opacity:0;
+  transform:scale(.98);
+  transition:opacity .15s ease, transform .15s ease;
+  overflow:hidden;
+}
+.mh-modal.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* ========= 舞台：左圖 + 右側文字框，一起跟視窗縮 ========= */
+.mh-detail{
+  display:flex;
+  gap:28px;
+  width:100%;
+  max-width:1200px;      /* 上限，超過就不再放大 */
+  font-size:16px;
+}
+
+/* ========= 左：放大圖（RWD） ========= */
+.mh-detail-img{
+  flex:0 1 42%;
+  max-width:460px;
+  width:42%;
+  height:auto;
+  display:block;
+  background:var(--bg);
+  border:2px solid var(--glow);
+  border-radius:var(--neon-radius);
+  box-shadow:0 0 34px #00eaff, inset 0 0 16px #00eaffbb;
+  object-fit:contain;
+}
+
+.mh-detail-img.neon-border::before{
+  border-radius:var(--neon-radius);
+}
+
+/* ========= 右：資訊面板 ========= */
+.mh-info{
+  flex:1 1 0;
+  width:auto;
+  background:var(--bg);
+  color:var(--ink);
+  border:2px solid var(--glow);
+  border-radius:var(--neon-radius);
+  box-shadow:0 0 34px #00eaff, inset 0 0 18px #00eaffb0;
+  padding:32px 48px;
+  line-height:1.7;
+}
+
+.mh-info::-webkit-scrollbar{ width:10px }
+.mh-info::-webkit-scrollbar-thumb{
+  background:#00eaffcc;
+  border-radius:10px;
+}
+.mh-info::-webkit-scrollbar-track{
+  background:var(--bg);
+}
+
+.mh-info h3{
+  margin:.2rem 0 .9rem;
+  color:#7de1ff;
+  font-weight:800;
+  font-size:1.7rem;
+  letter-spacing:.02em;
+  text-shadow:0 0 12px #00eaffcc;
+}
+
+.mh-info p{
+  margin:0 0 .7rem;
+  font-size:1.26rem;
+}
+
+.mh-hint{
+  font-size:.95rem;
+  opacity:.78;
+  margin-top:.35rem;
+}
+
+.mh-info.neon-border::before{
+  border-radius:var(--neon-radius);
+}
+
+/* ========= 內頁切換＋按鈕 ========= */
+.mh-pager{
+  display:flex;
+  gap:12px;
+  margin-top:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.mh-btn{
+  background:#06212b;
+  color:#bff1ff;
+  border:1px solid var(--glow);
+  border-radius:10px;
+  padding:8px 12px;
+  cursor:pointer;
+  transition:transform .08s ease, box-shadow .15s ease;
+  box-shadow:0 0 14px #00eaffaa, inset 0 0 10px #00eaff66;
+}
+.mh-btn:hover{
+  box-shadow:0 0 22px #00eaffee, inset 0 0 12px #00eaff88;
+}
+.mh-btn:active{
+  transform:scale(.95);
+}
+
+/* 關閉按鈕多一點間距 */
+.mh-btn-close{
+  margin-left:4px;
+}
+
+/* ========= 小視窗：改成上下排，整塊一起變小 ========= */
+@media (max-width: 900px){
+  .mh-detail{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .mh-detail-img{
+    width:100%;
+    max-width:100%;
+  }
+
+  .mh-info{
+    padding:24px 20px;
+  }
+}
+
+/* 極小螢幕再收窄一點 padding，避免被擠爆 */
+@media (max-width: 520px){
+  .mh-modal{
+    padding:14px;
+  }
+}

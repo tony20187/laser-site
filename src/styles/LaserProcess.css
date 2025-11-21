@@ -1,0 +1,149 @@
+/* ==== 全域設定 ==== */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important; /* ✅ 防止水平捲軸 */
+  background: #fff9e6;
+  font-family: "Noto Sans TC", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+img { display: block; max-width: 100%; height: auto; }
+
+/* ==== 主容器 ==== */
+.laser-process-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px clamp(16px, 4vw, 40px) 48px;
+  overflow-x: hidden !important;
+  background-color: #fff9e6;
+}
+
+/* ==== 標題 ==== */
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #b45309;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==== 卡片容器 ==== */
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ==== 單一卡片 ==== */
+.process-card {
+  width: clamp(260px, 22vw, 320px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+
+/* ==== 卡片內圖片 ==== */
+.step-image {
+  width: 100%;
+  height: clamp(160px, 18vh, 200px);
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  user-select: none;
+  vertical-align: top;
+}
+
+/* ==== 卡片文字（已加入標準屬性 line-clamp） ==== */
+.title {
+  margin: 12px 14px 18px;
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1.25;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+
+  /* 多行省略：先寫標準，再寫前綴（VS Code 就不會警告） */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;           /* ← 標準屬性（目前瀏覽器支援度較低，但可消警告） */
+  -webkit-line-clamp: 2;   /* ← 實際生效於 WebKit/Blink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+/* ==== 蜜蜂區塊 ==== */
+.bee-section {
+  margin-top: clamp(20px, 5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.bee-dialog {
+  background: #fff;
+  border: 2px solid #666;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: clamp(.95rem, 1.4vw, 1.1rem);
+  color: #333;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.12);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.bee-image {
+  height: clamp(120px, 18vmin, 180px);
+  width: auto;
+}
+
+/* ==== 背景蜂巢 ==== */
+.bg-left-top,
+.bg-right-bottom {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.bg-left-top {
+  top: clamp(8px, 2vw, 18px);
+  left: clamp(8px, 2vw, 18px);
+  width: clamp(160px, 24vw, 320px);
+}
+
+.bg-right-bottom {
+  right: clamp(8px, 2vw, 18px);
+  bottom: clamp(8px, 2vw, 18px);
+  width: clamp(180px, 28vw, 420px);
+}
+
+/* ==== RWD ==== */
+@media (max-width: 900px) {
+  .process-card { width: clamp(280px, 42vw, 360px); }
+}
+
+@media (max-width: 768px) {
+  .laser-process-container { padding: 72px 18px 28px; }
+  .card-wrapper { gap: 14px; }
+  .process-card { width: min(92vw, 520px); }
+  .step-image { height: clamp(160px, 22vh, 190px); }
+}

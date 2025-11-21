@@ -1,0 +1,202 @@
+/* === 你的原始基底 + RWD 四格同排修正 (FINAL) === */
+
+* { box-sizing: border-box; }
+img { display: block; max-width: 100%; height: auto; }
+
+:root{
+  --gap: clamp(12px, 2vw, 28px);     /* 卡片間距 */
+  --cards: 4;                        /* 固定四格 */
+}
+
+/* 頁面容器 */
+.laser-intro-container {
+  position: relative;
+  background-color: #fff9e6;
+  min-height: 100vh;
+  padding: clamp(80px, 8vmin, 120px) clamp(20px, 4vmin, 60px);
+  box-sizing: border-box;
+  overflow-x: clip;   /* ✅ 完全消除橫向卷軸 */
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* 頁面標題 */
+.page-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 800;
+  color: #b45309;
+  margin-bottom: clamp(30px, 4vmin, 50px);
+}
+
+/* 卡片容器：四格固定同排、等比縮放 */
+.card-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;                 /* ✅ 絕不換行 */
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--gap);
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 clamp(8px, 2vw, 24px);
+  overflow: hidden;                             /* 雙保險 */
+}
+
+/* 卡片樣式：寬度自算 = (容器寬 - 3*gap) / 4 */
+.intro-card {
+  flex: 0 1 calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards)) !important;
+  width: calc((100% - (var(--cards) - 1) * var(--gap)) / var(--cards)) !important;
+  min-width: 0 !important;                      /* ✅ 允許繼續縮小，避免掉行 */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: clamp(.6rem, 1vw, 1.2rem);           /* 減少內距，去除「透明框感」 */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; flex-direction: column; justify-content: space-between;
+  overflow: hidden;                              /* 圓角統一裁切 */
+}
+.intro-card:hover { transform: translateY(-8px); box-shadow: 0 8px 18px rgba(0,0,0,0.15); }
+
+/* 圖片取代 icon：固定比例、不變形 */
+.card-img {
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  object-fit: contain !important;
+  background: transparent !important;           /* 去灰底 */
+  border-radius: 0 !important;
+  margin-bottom: clamp(6px, 1vmin, 10px);
+}
+
+/* 卡片標題 */
+.title {
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  font-weight: 800;
+  color: #333;
+  margin-top: auto;
+  line-height: 1.25;
+}
+
+/* 🐝 蜜蜂區塊 */
+.bee-section {
+  margin-top: clamp(20px, 5vmin, 40px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+
+/* 蜜蜂圖片不超出頁面 */
+.bee-image {
+  max-height: clamp(160px, 24vmin, 300px);
+  width: auto;
+}
+
+/* 蜜蜂對話框 */
+.bee-dialog {
+  position: absolute;
+  top: 50px;
+  left: 80%;
+  transform: translateX(-50%);
+  width: max(200px, 18vw);
+  padding: 12px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  background-color: white;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  color: #222;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+/* 左上角背景圖 */
+.bg-left-top {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: clamp(120px, 22vw, 330px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* 右下角背景圖 */
+.bg-right-bottom {
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  width: clamp(150px, 28vw, 550px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ✅ 響應式：保持四格同排，只縮小比例；對話框改為上方段落 */
+@media (max-width: 768px) {
+  .bee-dialog {
+    position: static;
+    transform: none;
+    margin-bottom: 12px;
+    width: auto;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .bee-image { max-height: 220px; }
+}
+
+/* ✅ 超窄螢幕微調：仍四格，但更緊湊 */
+@media (max-width: 480px){
+  .title{ font-size: clamp(.9rem, 3.6vw, 1.1rem); }
+  .intro-card{ padding: clamp(.4rem, 1.2vw, .8rem); }
+}
+
+/* ===== 消除垂直卷軸的補丁（貼在最底） ===== */
+
+/* 1) 基礎：確保沒有瀏覽器預設邊距與橫向溢出 */
+html, body { height: 100%; margin: 0; overflow-x: hidden; }
+
+/* 2) 容器高度鎖定在可視高度，並縮小上下 padding */
+.laser-intro-container{
+  min-height: 100dvh !important;
+  height: 100dvh !important;           /* 以視窗實際高度為準 */
+  padding: clamp(60px, 6vmin, 90px) clamp(16px, 2vmin, 32px) !important;
+  overflow-y: clip !important;         /* 避免次像素造成的 1~2px 捲軸 */
+}
+
+/* 3) 標題與卡片上下距離收斂一點 */
+.page-title{
+  margin-bottom: clamp(18px, 3vmin, 28px) !important;
+}
+.card-wrapper{
+  gap: clamp(10px, 1.6vw, 24px) !important;
+  padding: 0 clamp(8px, 2vw, 20px) !important;
+}
+
+/* 4) 卡片本體與圖片的內距再縮一點，避免「透明框感」＋吃高度 */
+.intro-card{
+  padding: clamp(.5rem, .9vw, 1rem) !important;
+}
+.card-img{
+  margin-bottom: clamp(4px, .8vmin, 8px) !important;
+}
+
+/* 5) 蜜蜂區塊間距縮短，避免把頁面撐高 */
+.bee-section{
+  margin-top: clamp(8px, 2.5vmin, 16px) !important;
+}
+
+/* 6) 右下角裝飾圖上提，避免壓到頁面底線 */
+.bg-right-bottom{
+  bottom: clamp(6px, 1.2vmin, 14px) !important;
+}
+
+/* 7) 超窄螢幕再收一點（仍維持四格一排） */
+@media (max-width: 480px){
+  .intro-card{ padding: clamp(.35rem, 1vw, .7rem) !important; }
+  .title{ font-size: clamp(.9rem, 3.4vw, 1.1rem) !important; }
+}

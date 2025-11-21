@@ -1,0 +1,192 @@
+/* ✅ CuttingComparison.css（完整修正版）
+   目標＝你給的「第二張圖」版面：
+   1) 表格不被擋、對話框在下方區域
+   2) 照片與 Bee 置中且自動縮放
+   3) 不會顯示水平卷軸；視覺上隱藏任何卷軸
+*/
+
+/* —— 全域：隱藏卷軸(僅視覺)並杜絕水平溢出 —— */
+html, body { height: 100%; overflow-x: hidden; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+body::-webkit-scrollbar { display: none; }
+
+/* ✅ 獨立 CuttingComparison 專用，class 前面都加 cc- 前綴 */
+.cc-container {
+  background: #fff9e6;
+  /* 以視窗高度控制上下內距，避免高度不夠造成捲動條 */
+  padding: clamp(120px, 12vh, 160px) clamp(16px, 3vw, 40px) clamp(48px, 8vh, 80px);
+  min-height: 100dvh;
+  font-family: "Noto Sans TC", sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;         /* 絕不出現水平卷軸 */
+  position: relative;
+}
+
+.cc-title {
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: bold;
+  color: #b45309;
+  margin-top: clamp(-60px, -6vh, -90px);
+  margin-bottom: clamp(24px, 4vh, 40px);
+}
+
+/* 表格不被擋，互動在最上層視覺區 */
+.cc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  background: #fff;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  table-layout: fixed;
+  word-break: break-word;
+  position: relative;
+  z-index: 5;
+  cursor: default;
+}
+.cc-table th,
+.cc-table td {
+  border: 1px solid #ccc;
+  padding: clamp(8px, 1.2vw, 12px) clamp(10px, 1.6vw, 16px);
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.3s ease;
+}
+.cc-table th { background: #fde68a; color: #92400e; }
+.cc-table tr:hover { background: #fef3c7; }
+
+/* 下方展示區：與表格保持安全間距，避免重疊 */
+.cc-display {
+  text-align: center;
+  margin-top: clamp(48px, 6vh, 72px);
+}
+
+.cc-image-block h2 {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  margin-bottom: 10px;
+  color: #92400e;
+}
+
+/* 照片：置中＋等比縮放，永不溢出 */
+.cc-method-image {
+  display: block;
+  margin: 0 auto;
+  width: clamp(180px, 25vw, 350px);
+  max-width: 100%;
+  height: auto;
+  border: 4px solid #fde68a;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* Bee 與對話框（呈現為第二張截圖樣式） */
+.cc-bee-dialog-block {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  max-width: 100%;
+  margin-top: 24px;
+}
+
+/* Bee：置中顯示，自動縮放、不超出視窗 */
+.cc-bee-image {
+  display: block;
+  margin: 0 auto;
+  width: clamp(120px, 26vw, 360px);
+  height: auto;
+  object-fit: contain;
+}
+
+/* 對話框：置於 Bee 左下側，不遮表格；寬高與位置會自適應 */
+.cc-dialog {
+  position: absolute;
+  top: clamp(18px, 3vw, 36px);                    /* 自 Bee 往下些 */
+  left: calc(-1 * clamp(160px, 30vw, 420px));     /* 放在 Bee 左邊 */
+  background: #ffffff;
+  border: 2px solid #92400e;
+  padding: clamp(10px, 1.6vw, 18px) clamp(12px, 2vw, 22px);
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  width: clamp(180px, 34vw, 440px);
+  max-width: 90vw;                                /* 極小裝置不會溢出 */
+  font-size: clamp(0.95rem, 1.8vw, 1.4rem);
+  line-height: 1.6;
+  color: #92400e;
+  z-index: 1;                                     /* 在表格之下的層級，避免遮擋 */
+}
+
+/* ============ RWD（僅調整尺寸/間距，不改結構） ============ */
+
+/* 1200px 以下：微縮尺寸 */
+@media (max-width: 1200px) {
+  .cc-method-image { width: clamp(160px, 30vw, 320px); }
+  .cc-bee-image    { width: clamp(110px, 28vw, 320px); }
+  .cc-dialog {
+    width: clamp(170px, 36vw, 380px);
+    left: calc(-1 * clamp(140px, 30vw, 380px));
+  }
+}
+
+/* 992px 以下（平板） */
+@media (max-width: 992px) {
+  .cc-table { font-size: 1.05rem; }
+  .cc-table th, .cc-table td { padding: 10px 12px; }
+  .cc-method-image { width: clamp(150px, 38vw, 280px); }
+  .cc-bee-image    { width: clamp(100px, 34vw, 260px); }
+  .cc-dialog {
+    width: clamp(160px, 44vw, 320px);
+    left: calc(-1 * clamp(120px, 34vw, 320px));
+    top: clamp(12px, 2.4vw, 28px);
+  }
+}
+
+/* 768px 以下（手機橫向） */
+@media (max-width: 768px) {
+  .cc-container { padding: clamp(96px, 12vh, 140px) 20px clamp(40px, 8vh, 70px); }
+  .cc-title { font-size: 1.6rem; margin-top: clamp(-50px, -6vh, -70px); }
+  .cc-table  { font-size: 1rem; }
+  .cc-table th, .cc-table td { padding: 8px 10px; }
+  .cc-method-image { width: clamp(140px, 50vw, 240px); }
+  .cc-bee-image    { width: clamp(90px, 40vw, 220px); }
+  .cc-dialog {
+    width: clamp(150px, 56vw, 300px);
+    left: calc(-1 * clamp(110px, 42vw, 300px));
+    top: clamp(8px, 2.2vw, 24px);
+  }
+}
+
+/* 576px 以下（手機直向） */
+@media (max-width: 576px) {
+  .cc-container { padding: clamp(84px, 12vh, 120px) 14px clamp(36px, 8vh, 60px); }
+  .cc-title { font-size: 1.4rem; margin-top: clamp(-40px, -6vh, -60px); }
+  .cc-table  { font-size: 0.95rem; }
+  .cc-table th, .cc-table td { padding: 6px 8px; }
+  .cc-method-image { width: clamp(120px, 62vw, 200px); }
+  .cc-bee-image    { width: clamp(90px, 54vw, 200px); }
+  .cc-dialog {
+    width: clamp(140px, 66vw, 260px);
+    left: calc(-1 * clamp(90px, 48vw, 260px));
+    top: clamp(6px, 2vw, 20px);
+  }
+}
+
+/* 400px 以下（極小裝置） */
+@media (max-width: 400px) {
+  .cc-title { font-size: 1.2rem; }
+  .cc-table { font-size: 0.85rem; }
+  .cc-table th, .cc-table td { padding: 4px 6px; }
+  .cc-method-image { width: clamp(100px, 70vw, 160px); }
+  .cc-bee-image    { width: clamp(80px, 62vw, 180px); }
+  .cc-dialog {
+    width: clamp(120px, 72vw, 220px);
+    left: calc(-1 * clamp(80px, 52vw, 220px));
+    top: clamp(4px, 1.8vw, 16px);
+  }
+}
+
+/* —— 高度過矮的螢幕：再縮，避免出現縱向卷軸 —— */
+@media (max-height: 720px) {
+  .cc-container { padding-top: clamp(72px, 10vh, 96px); }
+  .cc-title { margin-top: clamp(-30px, -4vh, -40px); }
+  .cc-dialog { font-size: clamp(0.9rem, 1.6vw, 1.2rem); }
+}

@@ -1,0 +1,169 @@
+/* =============================
+   Applications.css  (RWD 完整版)
+   - 不變更結構：僅以樣式讓四卡永遠同排並隨螢幕縮放
+   - 若螢幕極小：字體/間距以 clamp() 等比縮小，仍維持四欄
+================================ */
+
+/* === 主要容器 === */
+.applications-container {
+  background-color: #fff9e6;
+  padding: 120px 20px 60px;
+  min-height: 100vh;
+  color: #333;
+  font-family: "Noto Sans TC", sans-serif;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* === 標題 & 副標題 === */
+.applications-title {
+  margin-top: -40px;
+  font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+  color: #b45309;
+}
+
+.applications-subtext {
+  margin-top: 10px;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  color: #666;
+}
+
+/* === 卡片區塊：四欄固定一排 === */
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* 永遠四欄 */
+  align-items: start;
+  justify-items: stretch;
+  gap: clamp(12px, 2vw, 30px);
+  margin-top: 40px;
+}
+
+/* === 單一卡片 === */
+.application-card {
+  background: #fff;
+  border-radius: clamp(12px, 2vw, 20px);
+  width: auto; /* 交由 grid 等分 */
+  padding: clamp(12px, 1.6vw, 20px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, background 0.3s;
+  transform-origin: top left;
+}
+
+.application-card:hover {
+  transform: translateY(-8px);
+  background: #fef3c7;
+}
+
+.application-card h2 {
+  font-size: clamp(1rem, 1.4vw, 1.5rem);
+  margin-bottom: clamp(8px, 1.2vw, 15px);
+  color: #b45309;
+}
+
+.application-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.application-card li {
+  margin-bottom: clamp(6px, 0.9vw, 12px);
+  font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+  line-height: 1.4;
+}
+
+/* === Hover 顯示圖片（置底置中，自適應寬度） === */
+.applications-hover-image {
+  position: absolute;
+  bottom: clamp(30px, 6vh, 100px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(80vw, 1200px);
+  max-width: min(80vw, 1200px);
+  border-radius: clamp(12px, 2vw, 20px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* === 蜜蜂獨立控制（不跟段落） === */
+.applications-bee {
+  position: absolute;
+  bottom: clamp(-10px, 3vh, 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(120px, 20vw, 450px);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* === 對話框獨立控制（不跟段落） === */
+.applications-dialog {
+  position: absolute;
+  bottom: clamp(80px, 12vh, 190px);
+  left: clamp(16%, 30vw, 30%);
+  transform: translateX(-50%);
+  background: #fff;
+  padding: clamp(12px, 1.2vw, 20px) clamp(16px, 1.5vw, 30px);
+  border: 2px solid #d97706;
+  border-radius: clamp(10px, 1.2vw, 12px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  color: #b45309;
+  line-height: 1.6;
+  z-index: 11;
+}
+
+/* === 針對小螢幕的保護性覆寫（仍維持四欄，不回退單欄） === */
+@media (max-width: 768px) {
+  /* 依需求：手機也維持四欄，所以不改 grid-template-columns */
+  .applications-grid {
+    gap: clamp(8px, 2vw, 16px);
+  }
+
+  /* 移除會導致單欄/換行的寬度規則，維持自適應 */
+  .application-card {
+    width: auto;
+    padding: clamp(10px, 2.2vw, 14px);
+    border-radius: clamp(10px, 2vw, 14px);
+  }
+
+  .application-card h2 {
+    font-size: clamp(0.9rem, 2.4vw, 1.1rem);
+  }
+
+  .application-card li {
+    font-size: clamp(0.78rem, 2.2vw, 1rem);
+  }
+
+  .applications-hover-image {
+    width: min(92vw, 1000px);
+    max-width: min(92vw, 1000px);
+    bottom: clamp(20px, 5vh, 40px);
+  }
+
+  .applications-bee {
+    width: clamp(90px, 14vw, 160px);
+    bottom: clamp(10px, 3vh, 24px);
+  }
+
+  .applications-dialog {
+    bottom: clamp(70px, 14vh, 120px);
+    left: clamp(18%, 34vw, 34%);
+    font-size: clamp(0.9rem, 2.6vw, 1.1rem);
+    padding: clamp(10px, 2.2vw, 14px) clamp(12px, 2.6vw, 18px);
+  }
+}
+
+/* === 超大螢幕微調（避免過大） === */
+@media (min-width: 1600px) {
+  .applications-grid { gap: 24px; }
+  .application-card { padding: 18px 20px; }
+}
+
+/* === 可選：當容器極窄仍要保持四欄時提供水平捲動（預設關閉）
+.applications-container { overflow-x: auto; }
+.applications-grid { min-width: 900px; }
+*/

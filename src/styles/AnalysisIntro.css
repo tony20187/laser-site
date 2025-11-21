@@ -1,0 +1,143 @@
+/* ============================================
+   AnalysisIntro.css
+   完整比照 MachineIntro.css（RWD、圖片等比、蜜蜂等）
+   ============================================ */
+
+.analysis-intro-container,
+.analysis-intro-container * { 
+  box-sizing: border-box;
+}
+
+/* 全頁背景＋版面一致 */
+.analysis-intro-container{
+  position: relative;
+  min-height: 100dvh;
+  padding: 40px 20px 20px;
+  background:#fff9e6;
+  overflow-x: hidden;
+}
+
+/* 標題 */
+.analysis-intro-container .page-title{
+  text-align:center;
+  color:#b45309;
+  font-weight:700;
+  font-size:clamp(1.6rem,3vw,2.6rem);
+  margin:16px 16px;
+  position: relative; 
+  z-index: 1;
+}
+
+/* ====== 卡片容器 ====== */
+.analysis-intro-container .module-card-wrapper{
+  display:flex;
+  gap:28px;
+  justify-content:center;
+  align-items:stretch;
+  flex-wrap:wrap;
+  max-width:1400px;
+  margin:0 auto 12px;
+  padding:0 18px;
+  position: relative; 
+  z-index: 1;
+  overflow: clip;
+}
+
+/* ====== 單張卡片 ====== */
+.analysis-intro-container .module-card{
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  width: min(48%, 660px);
+  min-width:300px;
+  transition:transform .25s ease;
+  position:relative;
+}
+
+.analysis-intro-container .module-card:hover{
+  transform: translateY(-6px);
+}
+
+/* ====== 圖片容器 ====== */
+.analysis-intro-container .module-image-container{
+  width:100%;
+  height: clamp(260px, 28vw, 420px);
+  display:grid;
+  place-items:center;
+  background:#fff;
+  padding:12px;
+  overflow:hidden;
+}
+
+.analysis-intro-container .module-image-container img{
+  display:block;
+  max-width:100%; 
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* ====== 名稱 ====== */
+.analysis-intro-container .module-name{
+  margin:12px 0 18px;
+  font-weight:700;
+  text-align:center;
+  color:#333;
+  font-size:clamp(.95rem,1.4vw,1.2rem);
+}
+
+/* ====== 蜜蜂提示 ====== */
+.analysis-intro-container .bee-section{
+  margin:40px 0 8px;
+  display:flex; 
+  flex-direction:column;
+  align-items:center; 
+  gap:12px;
+  position: relative; 
+  z-index: 1;
+}
+
+.analysis-intro-container .bee-dialog{
+  background:#fff; 
+  border:2px solid #888; 
+  border-radius:12px;
+  padding:10px 18px; 
+  font-weight:700;
+  box-shadow:2px 2px 8px rgba(0,0,0,.12);
+}
+
+.analysis-intro-container .bee-image{
+  width: clamp(170px, 22vmin, 240px);
+  height:auto;
+}
+
+/* ====== 背景裝飾 ====== */
+.analysis-intro-container .bg-top-left,
+.analysis-intro-container .bg-bottom-right{
+  position: fixed !important;
+  z-index: 0; 
+  opacity:.95;
+  max-width:100%;
+  pointer-events:none;
+}
+
+.analysis-intro-container .bg-top-left{
+  top: 8px; left: 8px;
+  width: clamp(180px, 25vw, 420px);
+}
+
+.analysis-intro-container .bg-bottom-right{
+  right: 8px; bottom: 8px;
+  width: clamp(200px, 28vw, 460px);
+}
+
+/* ====== RWD ====== */
+@media (max-width:900px){
+  .analysis-intro-container .module-card{
+    width:100%; max-width:900px;
+  }
+}

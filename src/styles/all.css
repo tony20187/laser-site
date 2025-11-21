@@ -1,0 +1,30 @@
+/* === Tailwind v4：一次導入三層 === */
+@import "tailwindcss";
+
+/* === 你的所有自訂樣式（統一集中）=== */
+@import "./Applications.css";
+@import "./CuttingComparison.css";
+@import "./Home.css";
+@import "./HowItWorks.css";
+@import "./Howlaser.css";
+@import "./LaserIntro.css";
+@import "./LaserProcess.css";
+@import "./MachineIntro.css";
+@import "./MachineDetail.css";
+@import "./MainUI.css";
+@import "./Navbar.css";
+@import "./QuizGame.css";
+@import "./Secc.css";
+@import "./Sgcc.css";
+@import "./SheetDetails.css";
+@import "./SheetMaterials.css";
+@import "./Spcc.css";
+@import "./Splash.css";
+@import "./Step1Page.css";
+@import "./Step2Page.css";
+@import "./Step3Page.css";
+@import "./Step4Page.css";
+@import "./Sus304.css";
+@import "./Sus430.css";
+@import "./SwirlAnimation.css";
+@import "./Team.css";

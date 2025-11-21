@@ -1,0 +1,150 @@
+/* =============================
+   ⚙️ MachineDetail.css 最終穩定版 v2025.11 固定蜂版
+   固定右下角蜜蜂、隨螢幕縮放、無溢出/捲軸
+   ============================= */
+
+/* 僅本頁作用，不影響其他頁 */
+.machine-detail-container,
+.machine-detail-container * {
+  box-sizing: border-box;
+}
+
+/* === 主容器 === */
+.machine-detail-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* === 左側文字區 === */
+.machine-detail-container .machine-text {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 60%;
+  z-index: 2;
+}
+
+.machine-detail-container .machine-text h1,
+.machine-detail-container .machine-text h2 {
+  color: #b45309;
+  margin-top: 1rem;
+}
+
+/* 移除 hover 灰底效果 */
+.machine-detail-container .machine-text li:hover,
+.machine-detail-container .machine-text h1:hover,
+.machine-detail-container .machine-text h2:hover,
+.machine-detail-container .machine-text p:hover {
+  background-color: transparent !important;
+  transition: none !important;
+}
+
+/* === 右上圖片區 === */
+.machine-detail-container .machine-image {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 50vw;
+  max-width: 1200px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.machine-detail-container .machine-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* === 蜜蜂提示區（固定右下角 + 自動縮放）=== */
+.machine-detail-container .bee-floating-hint {
+  position: fixed;
+  bottom: 3vw;    /* ✅ 使用 vw 做相對縮放 */
+  right: 3vw;     /* ✅ 保持距離螢幕邊緣比例一致 */
+  z-index: 99;
+  pointer-events: none;
+  text-align: center;
+}
+
+.machine-detail-container .bee-floating-hint-inner {
+  position: relative;
+}
+
+/* 提示框 */
+.machine-detail-container .bee-speech-bubble {
+  position: absolute;
+  bottom: 90%; /* 固定在蜜蜂上方 */
+  left: -50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 0.6em 1.2em;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 蜜蜂圖片：自動隨螢幕縮放 */
+.machine-detail-container .bee-image {
+  width: clamp(140px, 18vw, 280px);  /* ✅ RWD 縮放比例 */
+  height: auto;
+  animation: floatBee 2.5s ease-in-out infinite;
+}
+
+@keyframes floatBee {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* === 響應式 === */
+@media (max-width: 992px) {
+  .machine-detail-container {
+    flex-direction: column;
+    padding: 60px 20px 40px;
+  }
+
+  .machine-detail-container .machine-text {
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .machine-detail-container .machine-image {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 90vw;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .machine-detail-container .bee-speech-bubble {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .machine-detail-container .bee-image {
+    width: clamp(100px, 22vw, 140px); /* ✅ 手機時自動縮小 */
+  }
+
+  .machine-detail-container .bee-speech-bubble {
+    font-size: 0.9rem;
+  }
+}

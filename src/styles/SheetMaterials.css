@@ -1,0 +1,153 @@
+/* ✅ SheetMaterials.css - 移除捲動條＋強化RWD控制 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ⛔ 保險再加一層 */
+}
+
+.sheet-container {
+  padding: 30px 10px;
+  background-color: #fff9e6;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.sheet-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #b45309;
+}
+
+.sheet-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 12px;
+}
+
+/* ✅ 卡片樣式 */
+.sheet-card {
+  width: 220px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease;
+  cursor: pointer;
+  text-align: center;
+  padding: 16px;
+}
+
+.sheet-card:hover {
+  transform: translateY(-4px);
+}
+
+.sheet-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.sheet-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+/* ✅ 蜜蜂 + 對話框 */
+.bee-section {
+  margin-top: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bee-image {
+  height: 450px;
+  width: auto;
+  position: relative;
+}
+
+.bee-dialog {
+  position: absolute;
+  top: 20%;
+  left: calc(50% - 180px);
+  transform: translateX(-100%) translateY(-50%);
+  width: 280px;
+  padding: 10px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #222;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  white-space: nowrap;
+  text-align: center;
+  z-index: 10;
+}
+
+/* ✅ 裝飾圖位置設定 */
+.decor-left {
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  z-index: 1;
+}
+
+.decor-left img {
+  width: 330px;
+  max-width: 100%;
+  height: auto;
+}
+
+.decor-right {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.decor-right img {
+  width: 450px;
+  max-width: 100vw;
+  height: auto;
+}
+
+/* ✅ RWD 響應式 */
+@media (max-width: 900px) {
+  .sheet-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .sheet-card {
+    width: 90%;
+  }
+
+  .decor-left img,
+  .decor-right img {
+    width: 180px;
+  }
+
+  .bee-image {
+    height: 300px;
+  }
+
+  .bee-dialog {
+    width: 240px;
+    font-size: 1.1rem;
+  }
+}

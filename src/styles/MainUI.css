@@ -1,0 +1,142 @@
+/* ================================
+   MainUI.css - 最終版（無靜音按鈕）
+================================ */
+.main-ui-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff9e6;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+
+/* 蜂 LOGO */
+.bee-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(240px, 45vmin, 620px);
+  height: clamp(240px, 45vmin, 620px);
+  background: url("/A-06-06.png") no-repeat center/contain;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.28));
+}
+
+.bee-logo.bee-intro {
+  animation: beePop 0.9s ease-out forwards, beeGlow 0.9s ease-out forwards;
+}
+@keyframes beePop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0;
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+@keyframes beeGlow {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(255, 215, 64, 0));
+  }
+  40% {
+    filter: drop-shadow(0 0 22px rgba(255, 215, 64, 0.55));
+  }
+  100% {
+    filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.28));
+  }
+}
+
+/* 按鈕容器 */
+.menu-buttons {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* 通用按鈕 */
+.menu-button {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  padding: clamp(0.8rem, 1.2vw, 1.5rem) clamp(1.4rem, 2.2vw, 2.6rem);
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  background: #fcd34d;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out,
+    box-shadow 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.menu-button.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.menu-button:hover {
+  background: #fbbf24;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
+}
+
+.menu-button.pressed {
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.menu-button:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+/* 波紋動畫 */
+.menu-button .ripple {
+  position: absolute;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffffffcc 0%,
+    #ffffff66 50%,
+    #ffffff00 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  animation: ripplePop 0.6s ease-out forwards;
+  mix-blend-mode: screen;
+}
+
+@keyframes ripplePop {
+  to {
+    transform: translate(-50%, -50%) scale(16);
+    opacity: 0;
+  }
+}
+
+/* 環形分佈 */
+.menu-button {
+  --radius: clamp(120px, 24vmin, 360px);
+  left: calc(50% + cos(var(--angle, 0deg)) * var(--radius));
+  top: calc(50% + sin(var(--angle, 0deg)) * var(--radius));
+}
+
+/* 小螢幕縮半徑 */
+@media (max-width: 768px) {
+  .menu-button {
+    --radius: clamp(90px, 20vmin, 220px);
+  }
+}

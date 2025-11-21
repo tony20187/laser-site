@@ -1,0 +1,140 @@
+/* HowItWorks.css */
+.howitworks-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff9e6;
+  padding: 80px 40px 40px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+/* 左邊區塊 */
+.howitworks-left {
+  flex: 1;
+  padding-right: 40px;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 50%;
+  min-width: 300px;
+}
+
+/* 右邊區塊 */
+.howitworks-right {
+  flex: 1;
+  padding-left: 40px;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #333;
+  max-width: 50%;
+  min-width: 300px;
+}
+
+.howitworks-left h1,
+.howitworks-left h3,
+.howitworks-right h3 {
+  color: #b45309;
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem; /* 縮小標題與段落間距 */
+}
+
+.howitworks-left p,
+.howitworks-left ol,
+.howitworks-right p,
+.howitworks-right ul {
+  margin-top: 0.3rem; /* 緊貼標題 */
+}
+
+.howitworks-left ol,
+.howitworks-right ul {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.laser-image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+
+
+
+.howitworks-left p:hover,
+.howitworks-left h1:hover,
+.howitworks-left h3:hover,
+.howitworks-left li:hover,
+.howitworks-right li:hover,
+.howitworks-right h3:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 🐝 HowItWorks 專用蜜蜂與對話框 */
+.HIWbee-floating-hint {
+  position: fixed;
+  bottom: -50px;     /* ✅ 位置可自訂 */
+  right: 1000px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.HIWbee-floating-hint-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.HIWbee-speech-bubble {
+  position: absolute;
+  bottom: 60%;
+  left: -300px;
+  background-color: #ffffff;
+  border: 2px solid #444;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  text-align: center;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.HIWbee-image {
+  width: 400px;
+  height: auto;
+  animation: floatHIWbee 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatHIWbee {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* === RWD === */
+@media (max-width: 768px) {
+  .howitworks-container {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .howitworks-left,
+  .howitworks-right {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .listen-again-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

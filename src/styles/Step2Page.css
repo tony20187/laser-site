@@ -1,0 +1,48 @@
+.step2-container {
+  padding: 100px 40px 40px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.step2-title {
+  font-size: 32px;
+  color: #b45309;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.step2-description {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.step2-image-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.step2-image-block {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.step2-image-block:hover {
+  transform: scale(1.05);
+}
+
+.step2-image-block img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

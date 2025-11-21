@@ -1,0 +1,130 @@
+.swirl-container {
+  position: fixed;
+  inset: 0;
+  background: #fff9e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  z-index: 5000;
+}
+
+/* ✅ 蜜蜂置中並可縮放 */
+.bee {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(200px, 28vw, 500px);
+  height: clamp(200px, 28vw, 500px);
+  background: url('/bee.png') center/contain no-repeat;
+  transform: translate(-50%, -50%);
+  transition: transform 1.5s ease-in-out;
+  z-index: 1;
+}
+
+/* ✅ 六角形裝飾，固定比例 */
+.hexagon-decoration-left {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  width: clamp(120px, 20vw, 400px);
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hexagon-decoration-right {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  width: clamp(120px, 20vw, 400px);
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ✅ 蜜蜂旋轉縮小動畫 */
+.shrink-and-rotate {
+  animation: swirlFly 2s ease-in-out forwards;
+}
+@keyframes swirlFly {
+  0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.3) rotate(1080deg); opacity: 0.1; }
+}
+
+/* ✅ 對話框固定在蜜蜂左上方（比例定位） */
+.dialog-box {
+  position: absolute;
+  top: 38%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: clamp(8px, 1vw, 20px) clamp(10px, 2vw, 24px);
+  font-size: clamp(1.2rem, 2vw, 2.5rem);
+  font-weight: 600;
+  color: #222;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  animation: fadeIn 0.6s ease-in-out;
+  max-width: clamp(200px, 22vw, 400px);
+  text-align: center;
+  z-index: 10;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95) translate(-50%, -50%); }
+  to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+}
+
+/* ✅ 防止滾動條 */
+body { overflow: hidden; }
+
+/* ✅ 窄螢幕（手機直式）微調 */
+@media (max-aspect-ratio: 10/13) {
+  .dialog-box {
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+  }
+}
+
+/* ✅ 超寬螢幕微調（21:9 或更寬） */
+@media (min-aspect-ratio: 21/9) {
+  .dialog-box {
+    top: 35%;
+    left: 30%;
+  }
+}
+/* ✅ 略過按鈕（右上角固定） */
+.skip-button {
+  position: fixed;
+  top: 4%;
+  right: 4%;
+  padding: clamp(8px, 1vw, 14px) clamp(14px, 1.8vw, 22px);
+  background: #b45309;
+  color: #fff;
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 50;
+  transition: all 0.25s ease;
+}
+
+.skip-button:hover {
+  background: #d97706;
+  transform: scale(1.08);
+}
+
+/* 手機小螢幕調整 */
+@media (max-width: 480px) {
+  .skip-button {
+    top: 3%;
+    right: 3%;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
